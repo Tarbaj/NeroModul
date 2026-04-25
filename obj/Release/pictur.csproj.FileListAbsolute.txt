@@ -1,0 +1,10 @@
+C:\inetpub\wwwroot\dnn-dev\bin\pictur.dll.config
+C:\inetpub\wwwroot\dnn-dev\bin\pictur.dll
+C:\inetpub\wwwroot\dnn-dev\bin\pictur.pdb
+C:\inetpub\wwwroot\dnn-dev\DesktopModules\MVC\pictur\obj\Release\pictur.csproj.AssemblyReference.cache
+C:\inetpub\wwwroot\dnn-dev\DesktopModules\MVC\pictur\obj\Release\picturpictur.App_LocalResources.Settings.resources
+C:\inetpub\wwwroot\dnn-dev\DesktopModules\MVC\pictur\obj\Release\pictur.csproj.GenerateResource.cache
+C:\inetpub\wwwroot\dnn-dev\DesktopModules\MVC\pictur\obj\Release\pictur.csproj.CoreCompileInputs.cache
+C:\inetpub\wwwroot\dnn-dev\DesktopModules\MVC\pictur\obj\Release\pictur.csproj.Up2Date
+C:\inetpub\wwwroot\dnn-dev\DesktopModules\MVC\pictur\obj\Release\pictur.dll
+C:\inetpub\wwwroot\dnn-dev\DesktopModules\MVC\pictur\obj\Release\pictur.pdb
