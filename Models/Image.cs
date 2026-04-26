@@ -18,33 +18,29 @@ using System.Web.Caching;
 
 namespace picturpictur.Models
 {
-    [TableName("pictur_Items")]
+    [TableName("pictur_Images")]
     //setup the primary key for table
-    [PrimaryKey("ItemId", AutoIncrement = true)]
+    [PrimaryKey("ImageId", AutoIncrement = true)]
     //configure caching using PetaPoco
     [Cacheable("Items", CacheItemPriority.Default, 20)]
     //scope the objects to the ModuleId of a module on a page (or copy of a module on a page)
     [Scope("ModuleId")]
-    public class Item
+    public class Image
     {
         ///<summary>
-        /// The ID of your object with the name of the ItemName
+        /// The ID of the image
         ///</summary>
-        public int ItemId { get; set; } = -1;
-        ///<summary>
-        /// A string with the name of the ItemName
-        ///</summary>
-        public string ItemName { get; set; }
+        public int ImageId { get; set; }
 
         ///<summary>
-        /// A string with the description of the object
+        /// A string with the name of the file
         ///</summary>
-        public string ItemDescription { get; set; }
+        public string FileName { get; set; }
 
         ///<summary>
         /// An integer with the user id of the assigned user for the object
         ///</summary>
-        public int AssignedUserId { get; set; }
+        public int UserId { get; set; }
 
         ///<summary>
         /// The ModuleId of where the object was created and gets displayed
@@ -52,23 +48,18 @@ namespace picturpictur.Models
         public int ModuleId { get; set; }
 
         ///<summary>
-        /// An integer for the user id of the user who created the object
+        /// data of the image
         ///</summary>
-        public int CreatedByUserId { get; set; } = -1;
+        public byte[] ImageData { get; set; }
 
         ///<summary>
-        /// An integer for the user id of the user who last updated the object
+        /// top color of image in hex
         ///</summary>
-        public int LastModifiedByUserId { get; set; } = -1;
+        public string TopColorHex { get; set; }
 
         ///<summary>
         /// The date the object was created
         ///</summary>
         public DateTime CreatedOnDate { get; set; } = DateTime.UtcNow;
-
-        ///<summary>
-        /// The date the object was updated
-        ///</summary>
-        public DateTime LastModifiedOnDate { get; set; } = DateTime.UtcNow;
     }
 }
