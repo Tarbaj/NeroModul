@@ -19,21 +19,21 @@ namespace picturpictur.Components
 {
     internal interface IImageManager
     {
-        void CreateItem(Image t);
+        void CreateItem(UserImage t);
         void DeleteItem(int itemId, int moduleId);
-        void DeleteItem(Image t);
-        IEnumerable<Image> GetItems(int moduleId);
-        Image GetItem(int itemId, int moduleId);
-        void UpdateItem(Image t);
+        void DeleteItem(UserImage t);
+        IEnumerable<UserImage> GetItems(int moduleId, int userId);
+        UserImage GetItem(int itemId, int moduleId);
+        void UpdateItem(UserImage t);
     }
 
     internal class ImageManager : ServiceLocator<IImageManager, ImageManager>, IImageManager
     {
-        public void CreateItem(Image t)
+        public void CreateItem(UserImage t)
         {
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<Image>();
+                var rep = ctx.GetRepository<UserImage>();
                 rep.Insert(t);
             }
         }
@@ -44,42 +44,40 @@ namespace picturpictur.Components
             DeleteItem(t);
         }
 
-        public void DeleteItem(Image t)
+        public void DeleteItem(UserImage t)
         {
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<Image>();
+                var rep = ctx.GetRepository<UserImage>();
                 rep.Delete(t);
             }
         }
 
-        public IEnumerable<Image> GetItems(int moduleId)
+        public IEnumerable<UserImage> GetItems(int moduleId, int userId)
         {
-            IEnumerable<Image> t;
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<Image>();
-                t = rep.Get(moduleId);
+                var rep = ctx.GetRepository<UserImage>();
+                return rep.Find("WHERE ModuleId = @0 AND UserId = @1", moduleId, userId);
             }
-            return t;
         }
 
-        public Image GetItem(int itemId, int moduleId)
+        public UserImage GetItem(int itemId, int moduleId)
         {
-            Image t;
+            UserImage t;
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<Image>();
+                var rep = ctx.GetRepository<UserImage>();
                 t = rep.GetById(itemId, moduleId);
             }
             return t;
         }
 
-        public void UpdateItem(Image t)
+        public void UpdateItem(UserImage t)
         {
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<Image>();
+                var rep = ctx.GetRepository<UserImage>();
                 rep.Update(t);
             }
         }

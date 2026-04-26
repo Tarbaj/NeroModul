@@ -1,0 +1,54 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<IEnumerable<picturpictur.Models.UserImage>>
+@using System.Linq
+
+<div id="Items-@Dnn.ModuleContext.ModuleId" class="dnnForm">
+
+    @* 1. The Upload Form *@
+    <div class="dnnFormItem">
+        <form action="@Url.Action("Upload", "Image")" method="post" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+
+            <label for="file">Upload Image:</label>
+            <input type="file" name="file" id="file" />
+
+            <button type="submit" class="dnnPrimaryAction">Process & Save</button>
+        </form>
+    </div>
+
+    <hr />
+
+    @* 2. The Data Display *@
+    @if (Model == null || !Model.Any())
+    {
+        <p>No images found for your account.</p>
+    }
+    else
+    {
+        <ul class="tm_tl" style="padding: 0;">
+            @foreach (var item in Model)
+            {
+                <li class="tm_t" style="border-bottom: 1px solid #ccc; padding: 10px; list-style: none;">
+                    <h3>@item.FileName</h3>
+                    <div style="display: flex; align-items: center; gap: 15px;">
+
+                        @* Color Preview Box - Uses the Hex code from your DB *@
+                        <div style="width: 50px; height: 50px; background-color: @item.TopColorHex; border: 2px solid #333; border-radius: 4px;"></div>
+
+                        <div>
+                            <strong>Top Color Hex:</strong> <code>@item.TopColorHex</code><br />
+                            <small>Uploaded on: @item.CreatedOnDate.ToShortDateString()</small>
+                        </div>
+
+                        <div style="margin-left: auto;">
+                            <a href="@Url.Action("Delete", "Image", new { imageId = item.ImageId })"
+                               class="dnnSecondaryAction"
+                               onclick="return confirm('Delete this image?')">
+                                Delete
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            }
+        </ul>
+    }
+</div>
