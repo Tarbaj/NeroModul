@@ -36,13 +36,11 @@ namespace picturpictur.Controllers
             return View(images);
         }
 
-        public ActionResult Upload()
-        {
-            return View();
-        }
+        
 
         [HttpPost]
-        [System.Web.Mvc.ValidateAntiForgeryToken]
+        [DotNetNuke.Web.Mvc.Framework.ActionFilters.ValidateAntiForgeryToken]
+        [DnnModuleAuthorize(AccessLevel = DotNetNuke.Security.SecurityAccessLevel.View)]
         public ActionResult Upload(HttpPostedFileBase file)
         {
             if (file != null && file.ContentLength > 0)
@@ -67,13 +65,13 @@ namespace picturpictur.Controllers
 
                 ImageManager.Instance.CreateItem(userImg);
             }
-            return RedirectToDefaultRoute();
+            return Redirect(DotNetNuke.Common.Globals.NavigateURL());
         }
 
         public ActionResult Delete(int imageId)
         {
             ImageManager.Instance.DeleteItem(imageId, ModuleContext.ModuleId);
-            return RedirectToDefaultRoute();
+            return Redirect(DotNetNuke.Common.Globals.NavigateURL());
         }
     }
 }

@@ -3,7 +3,6 @@
 
 <div id="Items-@Dnn.ModuleContext.ModuleId" class="dnnForm">
 
-    @* 1. The Upload Form *@
     <div class="dnnFormItem">
         <form action="@Url.Action("Upload", "Image")" method="post" enctype="multipart/form-data">
             @Html.AntiForgeryToken()
@@ -17,8 +16,7 @@
 
     <hr />
 
-    @* 2. The Data Display *@
-    @if (Model == null || !Model.Any())
+    @if (Model == null)
     {
         <p>No images found for your account.</p>
     }
@@ -31,7 +29,6 @@
                     <h3>@item.FileName</h3>
                     <div style="display: flex; align-items: center; gap: 15px;">
 
-                        @* Color Preview Box - Uses the Hex code from your DB *@
                         <div style="width: 50px; height: 50px; background-color: @item.TopColorHex; border: 2px solid #333; border-radius: 4px;"></div>
 
                         <div>

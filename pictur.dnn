@@ -1,6 +1,6 @@
 <dotnetnuke type="Package" version="5.0">
   <packages>
-    <package name="pictur" type="Module" version="00.00.02">
+    <package name="pictur" type="Module" version="00.00.03">
       <friendlyName>pictur</friendlyName>
       <description>pictur</description>
       <iconFile>~/Icons/Sigma/Software_32X32_Standard.png</iconFile>
@@ -21,13 +21,13 @@
             <basePath>DesktopModules\MVC\pictur</basePath>
             <script type="Install">
               <path>Providers\DataProviders\SqlDataProvider</path>
-              <name>00.00.02.SqlDataProvider</name>
-              <version>00.00.02</version>
+              <name>00.00.03.SqlDataProvider</name>
+              <version>00.00.03</version>
             </script>
             <script type="UnInstall">
               <path>Providers\DataProviders\SqlDataProvider</path>
               <name>Uninstall.SqlDataProvider</name>
-              <version>00.00.02</version>
+              <version>00.00.03</version>
             </script>
           </scripts>
         </component>
@@ -52,7 +52,7 @@
                 <moduleControls>
                   <moduleControl>
                     <controlKey />
-                    <controlSrc>picturpictur.Controllers/Image/Index.mvc</controlSrc>
+                    <controlSrc>picturpictur.Controllers.ImageController, Index.mvc</controlSrc>
                     <supportsPartialRendering>False</supportsPartialRendering>
                     <controlTitle />
                     <controlType>View</controlType>
@@ -62,7 +62,7 @@
                   </moduleControl>
                   <moduleControl>
                     <controlKey>Edit</controlKey>
-                    <controlSrc>picturpictur.Controllers/Image/Index.mvc</controlSrc>
+                    <controlSrc>picturpictur.Controllers.ImageController, Index.mvc</controlSrc>
                     <supportsPartialRendering>False</supportsPartialRendering>
                     <controlTitle>Edit Content</controlTitle>
                     <controlType>Edit</controlType>
@@ -73,7 +73,7 @@
                   </moduleControl>
                   <moduleControl>
                     <controlKey>Settings</controlKey>
-                    <controlSrc>picturpictur.Controllers/Settings/Settings.mvc</controlSrc>
+                    <controlSrc>picturpictur.Controllers.SettingsController, Settings.mvc</controlSrc>
                     <supportsPartialRendering>False</supportsPartialRendering>
                     <controlTitle>pictur Settings</controlTitle>
                     <controlType>Edit</controlType>

@@ -1,0 +1,31 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}pictur_Images]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}pictur_Images]
+GO
+
+CREATE TABLE {databaseOwner}[{objectQualifier}pictur_Images]
+    (
+    [ImageId] [int] IDENTITY (1, 1) NOT NULL,
+    [FileName] [nvarchar](255) NULL,
+    [UserId] [int] NULL,
+    [ModuleId] [int] NULL,
+    [ImageData] [varbinary](max) NULL,
+    [TopColorHex] [nvarchar](7) NULL,
+    [CreatedOnDate] [datetime] NULL,
+    CONSTRAINT [PK_{objectQualifier}pictur_Images] PRIMARY KEY CLUSTERED ([ImageId] ASC)
+    ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/
