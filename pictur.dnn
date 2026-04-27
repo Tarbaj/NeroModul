@@ -1,6 +1,6 @@
 <dotnetnuke type="Package" version="5.0">
   <packages>
-    <package name="pictur" type="Module" version="00.00.03">
+    <package name="pictur" type="Module" version="00.00.04">
       <friendlyName>pictur</friendlyName>
       <description>pictur</description>
       <iconFile>~/Icons/Sigma/Software_32X32_Standard.png</iconFile>
@@ -21,13 +21,13 @@
             <basePath>DesktopModules\MVC\pictur</basePath>
             <script type="Install">
               <path>Providers\DataProviders\SqlDataProvider</path>
-              <name>00.00.03.SqlDataProvider</name>
-              <version>00.00.03</version>
+              <name>00.00.04.SqlDataProvider</name>
+              <version>00.00.04</version>
             </script>
             <script type="UnInstall">
               <path>Providers\DataProviders\SqlDataProvider</path>
               <name>Uninstall.SqlDataProvider</name>
-              <version>00.00.03</version>
+              <version>00.00.04</version>
             </script>
           </scripts>
         </component>
@@ -52,7 +52,7 @@
                 <moduleControls>
                   <moduleControl>
                     <controlKey />
-                    <controlSrc>picturpictur.Controllers.ImageController, Index.mvc</controlSrc>
+                    <controlSrc>picturpictur.Controllers/Image/Index.mvc</controlSrc>
                     <supportsPartialRendering>False</supportsPartialRendering>
                     <controlTitle />
                     <controlType>View</controlType>
@@ -62,7 +62,7 @@
                   </moduleControl>
                   <moduleControl>
                     <controlKey>Edit</controlKey>
-                    <controlSrc>picturpictur.Controllers.ImageController, Index.mvc</controlSrc>
+                    <controlSrc>picturpictur.Controllers/Image/Index.mvc</controlSrc>
                     <supportsPartialRendering>False</supportsPartialRendering>
                     <controlTitle>Edit Content</controlTitle>
                     <controlType>Edit</controlType>
