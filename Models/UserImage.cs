@@ -60,6 +60,6 @@ namespace picturpictur.Models
         ///<summary>
         /// The date the object was created
         ///</summary>
-        public DateTime CreatedOnDate { get; set; } = DateTime.UtcNow;
+        public DateTime CreatedOnDate { get; set; }
     }
 }

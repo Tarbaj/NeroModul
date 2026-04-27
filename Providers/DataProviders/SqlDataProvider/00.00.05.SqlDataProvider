@@ -36,7 +36,8 @@ IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwne
 GO
 
 CREATE PROCEDURE {databaseOwner}[{objectQualifier}pictur_Images_GetImages]
-    @ModuleId INT
+    @ModuleId   INT,
+    @UserId     INT
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -51,6 +52,7 @@ BEGIN
         CreatedOnDate
     FROM {databaseOwner}[{objectQualifier}pictur_Images]
     WHERE ModuleId = @ModuleId
+    AND UserId = @UserId
     ORDER BY CreatedOnDate ASC
 END
 GO
