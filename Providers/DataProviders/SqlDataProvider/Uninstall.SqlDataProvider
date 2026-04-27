@@ -5,3 +5,9 @@ GO
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}pictur_Images]') AND type in (N'U'))
 DROP TABLE {databaseOwner}[{objectQualifier}pictur_Images]
 GO
+
+DROP PROCEDURE IF EXISTS {databaseOwner}[{objectQualifier}pictur_Images_GetImages]
+DROP PROCEDURE IF EXISTS {databaseOwner}[{objectQualifier}pictur_Images_GetImage]
+DROP PROCEDURE IF EXISTS {databaseOwner}[{objectQualifier}pictur_Images_AddImage]
+DROP PROCEDURE IF EXISTS {databaseOwner}[{objectQualifier}pictur_Images_DeleteImage]
+GO
