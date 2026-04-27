@@ -75,7 +75,6 @@ namespace picturpictur.Data
                 new System.Data.SqlClient.SqlParameter("@FileNameId", userImage.FileName),
                 new System.Data.SqlClient.SqlParameter("@UserId", userImage.UserId),
                 new System.Data.SqlClient.SqlParameter("@ModuleId", userImage.ModuleId),
-                new System.Data.SqlClient.SqlParameter("@ImageData", userImage.ImageData),
                 new System.Data.SqlClient.SqlParameter("@TopColorHex", userImage.TopColorHex));
 
             return Convert.ToInt32(result);
@@ -98,7 +97,6 @@ namespace picturpictur.Data
                 FileName = Null.SetNullString(reader["FileName"]),
                 UserId = Null.SetNullInteger(reader["UserId"]),
                 ModuleId = Null.SetNullInteger(reader["ModuleId"]),
-                ImageData = reader["ImageData"] as byte[],
                 TopColorHex = Null.SetNullString(reader["TopColorHex"]),
                 CreatedOnDate = Null.SetNullDateTime(reader["CreatedOnDate"])
             };

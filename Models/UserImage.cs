@@ -18,13 +18,6 @@ using System.Web.Caching;
 
 namespace picturpictur.Models
 {
-    [TableName("pictur_Images")]
-    //setup the primary key for table
-    [PrimaryKey("ImageId", AutoIncrement = true)]
-    //configure caching using PetaPoco
-    [Cacheable("Items", CacheItemPriority.Default, 20)]
-    //scope the objects to the ModuleId of a module on a page (or copy of a module on a page)
-    [Scope("ModuleId")]
     public class UserImage
     {
         ///<summary>
@@ -46,11 +39,6 @@ namespace picturpictur.Models
         /// The ModuleId of where the object was created and gets displayed
         ///</summary>
         public int ModuleId { get; set; }
-
-        ///<summary>
-        /// data of the image
-        ///</summary>
-        public byte[] ImageData { get; set; }
 
         ///<summary>
         /// top color of image in hex

@@ -19,59 +19,94 @@ using picturpictur.Models;
 using System;
 using System.Linq;
 using System.Web.Mvc;
-
 using System.Web;
 using System.IO;
+using DotNetNuke.Security;
 
 namespace picturpictur.Controllers
 {
     [DnnHandleError]
     public class ImageController : DnnController
     {
+        private readonly ImageService _imageService;
         private readonly ImageProcessor _processor = new ImageProcessor();
 
+        public ImageController()
+        {
+            _imageService = new ImageService();
+        }
+
+        [HttpGet]
         public ActionResult Index()
         {
-            var images = ImageManager.Instance.GetItems(ModuleContext.ModuleId, User.UserID);
+            var images = _imageService.GetUserImages(ModuleContext.ModuleId, User.UserID);
             return View(images);
         }
 
-        
-
-        [HttpPost]
-        [DotNetNuke.Web.Mvc.Framework.ActionFilters.ValidateAntiForgeryToken]
-        [DnnModuleAuthorize(AccessLevel = DotNetNuke.Security.SecurityAccessLevel.View)]
-        public ActionResult Upload(HttpPostedFileBase file)
+        [HttpGet]
+        public ActionResult Selected(int id)
         {
-            if (file != null && file.ContentLength > 0)
+            try
             {
-                byte[] fileData;
-                using (var binaryReader = new BinaryReader(file.InputStream))
-                {
-                    fileData = binaryReader.ReadBytes(file.ContentLength);
-                }
-                file.InputStream.Position = 0;
-                string hexColor = _processor.GetTopColor(file.InputStream);
-
-                var userImg = new UserImage
-                {
-                    ModuleId = ModuleContext.ModuleId,
-                    UserId = User.UserID,
-                    FileName = file.FileName,
-                    ImageData = fileData,
-                    TopColorHex = hexColor,
-                    CreatedOnDate = DateTime.Now
-                };
-
-                ImageManager.Instance.CreateItem(userImg);
+                var selectedImage = _imageService.GetImage(id);
+                return View(selectedImage);
             }
-            return Redirect(DotNetNuke.Common.Globals.NavigateURL());
+            catch (ArgumentException)
+            {
+                return RedirectToDefaultRoute();
+            }
         }
 
-        public ActionResult Delete(int imageId)
+        [HttpGet]
+        public ActionResult Edit()
         {
-            ImageManager.Instance.DeleteItem(imageId, ModuleContext.ModuleId);
-            return Redirect(DotNetNuke.Common.Globals.NavigateURL());
+            //ezen még dolgozni kel !!!!
+            return View(new UserImage { CreatedOnDate = DateTime.Today});
+        }
+
+        [HttpPost]
+        [System.Web.Mvc.ValidateAntiForgeryToken]
+        public ActionResult Edit(UserImage userImage)
+        {
+            try
+            {
+                _imageService.CreateImage(userImage);
+                return RedirectToDefaultRoute();
+            }
+            catch (ArgumentException)
+            {
+                return RedirectToDefaultRoute();
+            }
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            try
+            {
+                var userImage = _imageService.GetImage(id);
+                return View(userImage);
+            }
+            catch (ArgumentException)
+            {
+                return RedirectToDefaultRoute();
+            }
+        }
+
+        [HttpPost]
+        [System.Web.Mvc.ValidateAntiForgeryToken]
+        [ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            try
+            {
+                _imageService.DeleteImage(id);
+            }
+            catch (ArgumentException ex)
+            {
+                DotNetNuke.Services.Exceptions.Exceptions.LogException(ex);
+            }
+            return RedirectToDefaultRoute();
         }
     }
 }
