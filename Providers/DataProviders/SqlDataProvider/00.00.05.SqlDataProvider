@@ -8,19 +8,20 @@
 /*****                                                  *****/
 /************************************************************/
 
-IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}pictur_Images]'))
-BEGIN
-    CREATE TABLE {databaseOwner}[{objectQualifier}pictur_Images]
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}pictur_Images]'))
+    DROP TABLE {databaseOwner}[{objectQualifier}pictur_Images]
+GO
+
+CREATE TABLE {databaseOwner}[{objectQualifier}pictur_Images]
         (
         [ImageId] INT IDENTITY (1, 1) NOT NULL,
-        [FileName] NVARCHAR(255) NOT NULL,
+        [FileId] INT NOT NULL,
         [UserId] INT NOT NULL,
         [ModuleId] INT NOT NULL,
         [TopColorHex] NVARCHAR(7) NOT NULL,
         [CreatedOnDate] DATETIME NOT NULL DEFAULT GETDATE(),
         CONSTRAINT [PK_{objectQualifier}pictur_Images] PRIMARY KEY CLUSTERED ([ImageId] ASC)
         )
-END
 GO
 
 IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}pictur_Images]') AND name = N'IX_pictur_Images_ModuleId')
@@ -43,7 +44,7 @@ BEGIN
 
     SELECT
         ImageId,
-        FileName,
+        FileId,
         UserId,
         ModuleId,
         TopColorHex,
@@ -67,7 +68,7 @@ BEGIN
 
     SELECT
         ImageId,
-        FileName,
+        FileId,
         UserId,
         ModuleId,
         TopColorHex,

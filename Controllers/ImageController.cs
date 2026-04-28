@@ -22,6 +22,7 @@ using System.Web.Mvc;
 using System.Web;
 using System.IO;
 using DotNetNuke.Security;
+using System.Diagnostics;
 
 namespace picturpictur.Controllers
 {
@@ -60,16 +61,35 @@ namespace picturpictur.Controllers
         [HttpGet]
         public ActionResult Edit()
         {
-            //ezen még dolgozni kel !!!!
             return View(new UserImage { CreatedOnDate = DateTime.Today});
         }
 
         [HttpPost]
         [System.Web.Mvc.ValidateAntiForgeryToken]
-        public ActionResult Edit(UserImage userImage)
+        public ActionResult Edit(HttpPostedFileBase attachment)
         {
             try
             {
+                int fileId = 0;
+                string topColorHex = "#000000";
+                if (attachment != null && attachment.ContentLength > 0)
+                {
+                    var allowed = new[] { "image/jpeg", "image/png" };
+                    if (!Array.Exists(allowed, t => t == attachment.ContentType) || attachment.ContentLength >10*1024*1024)
+                    {
+                        return RedirectToDefaultRoute();
+                    }
+                    fileId = _processor.UploadImage(attachment, PortalSettings.PortalId);
+                    topColorHex = _processor.GetTopColor(attachment.InputStream);
+                }
+                var userImage = new UserImage()
+                {
+                    FileId          = fileId,
+                    UserId          = User.UserID,
+                    ModuleId        = ModuleContext.ModuleId,
+                    TopColorHex     = topColorHex
+                };
+
                 _imageService.CreateImage(userImage);
                 return RedirectToDefaultRoute();
             }

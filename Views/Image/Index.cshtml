@@ -1,51 +1,23 @@
-﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<IEnumerable<picturpictur.Models.UserImage>>
-@using System.Linq
+﻿@using DotNetNuke.Web.Mvc.Helpers
+@model IEnumerable<picturpictur.Models.UserImage>
 
-<div id="Items-@Dnn.ModuleContext.ModuleId" class="dnnForm">
+    <div class="pictur-module">
+        <div class="header">
+            <h2>My Images</h2>
+            <a href="@Url.Action("Edit", "Image")" class="dnnPrimaryAction">Upload New Image</a>
+        </div>
 
-    <div class="dnnFormItem">
-        <form action="@Url.Action("Upload", "Image")" method="post" enctype="multipart/form-data">
-            @Html.AntiForgeryToken()
-
-            <label for="file">Upload Image:</label>
-            <input type="file" name="file" id="file" />
-
-            <button type="submit" class="dnnPrimaryAction">Process & Save</button>
-        </form>
-    </div>
-
-    <hr />
-
-    @if (Model == null)
-    {
-        <p>No images found for your account.</p>
-    }
-    else
-    {
-        <ul class="tm_tl" style="padding: 0;">
+        <div class="image-grid" style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
             @foreach (var item in Model)
             {
-                <li class="tm_t" style="border-bottom: 1px solid #ccc; padding: 10px; list-style: none;">
-                    <h3>@item.FileName</h3>
-                    <div style="display: flex; align-items: center; gap: 15px;">
-
-                        <div style="width: 50px; height: 50px; background-color: @item.TopColorHex; border: 2px solid #333; border-radius: 4px;"></div>
-
-                        <div>
-                            <strong>Top Color Hex:</strong> <code>@item.TopColorHex</code><br />
-                            <small>Uploaded on: @item.CreatedOnDate.ToShortDateString()</small>
-                        </div>
-
-                        <div style="margin-left: auto;">
-                            <a href="@Url.Action("Delete", "Image", new { imageId = item.ImageId })"
-                               class="dnnSecondaryAction"
-                               onclick="return confirm('Delete this image?')">
-                                Delete
-                            </a>
-                        </div>
-                    </div>
-                </li>
+                <div class="image-item" style="border: 1px solid #ccc; padding: 10px; text-align: center;">
+                    <a href="@Url.Action("Selected", "Image", new { id = item.ImageId })">
+                        @* Note: You may need a helper to convert FileId to a URL *@
+                        <img src="/LinkClick.aspx?fileid=@item.FileId&portalid=@Dnn.PortalSettings.PortalId"
+                             style="width: 150px; height: 150px; object-fit: cover;" />
+                    </a>
+                    <div style="margin-top: 5px; height: 10px; background-color: @item.TopColorHex;"></div>
+                </div>
             }
-        </ul>
-    }
-</div>
+        </div>
+    </div>

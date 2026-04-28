@@ -4,6 +4,10 @@ using SixLabors.ImageSharp.Processing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
+using DotNetNuke.Entities.Portals;
+using DotNetNuke.Services.FileSystem;
+using System.IO;
 
 namespace picturpictur.Components
 {
@@ -33,6 +37,33 @@ namespace picturpictur.Components
                 if (colorCounts.Count() == 0) return "#000000";
                 var topColor = colorCounts.OrderByDescending(x => x.Value).First().Key;
                 return $"#{topColor.R:X2}{topColor.G:X2}{topColor.B:X2}";
+            }
+        }
+
+        public int UploadImage(HttpPostedFileBase file, int portalId)
+        {
+            var folderManager = FolderManager.Instance;
+            var fileManager = FileManager.Instance;
+
+            const string folderPath = "pictur/";
+            IFolderInfo folder = folderManager.GetFolder(portalId, folderPath)
+                ?? folderManager.AddFolder(portalId, folderPath);
+            string safeName = Path.GetFileName(file.FileName)
+                .Replace(" ", "_");
+            IFileInfo savedFile = fileManager.AddFile(
+                folder,
+                safeName,
+                file.InputStream,
+                overwrite: true);
+            return savedFile.FileId;
+        }
+
+        public void DeleteImage(int fileId)
+        {
+            var fileInfo = FileManager.Instance.GetFile(fileId);
+            if (fileInfo != null)
+            {
+                FileManager.Instance.DeleteFile(fileInfo);
             }
         }
     }

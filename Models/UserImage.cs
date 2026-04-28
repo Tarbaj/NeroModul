@@ -25,10 +25,10 @@ namespace picturpictur.Models
         ///</summary>
         public int ImageId { get; set; }
 
-        ///<summary>
-        /// A string with the name of the file
+        //<summary>
+        /// Id of attached pic
         ///</summary>
-        public string FileName { get; set; }
+        public int FileId { get; set; }
 
         ///<summary>
         /// An integer with the user id of the assigned user for the object

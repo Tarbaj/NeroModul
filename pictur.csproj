@@ -127,6 +127,7 @@
     <Compile Include="Components\FeatureController.cs" />
     <Compile Include="Components\ImageManager.cs" />
     <Compile Include="Components\ImageProcessor.cs" />
+    <Compile Include="Components\ImageService.cs" />
     <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Data\IImageDataRepository.cs" />
     <Compile Include="Data\SqlDataProvider.cs" />

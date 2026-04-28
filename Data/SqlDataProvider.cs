@@ -72,7 +72,7 @@ namespace picturpictur.Data
                 _connectionString,
                 CommandType.StoredProcedure,
                 GetFullyQualifiedName("AddImage"),
-                new System.Data.SqlClient.SqlParameter("@FileNameId", userImage.FileName),
+                new System.Data.SqlClient.SqlParameter("@FileId", userImage.FileId),
                 new System.Data.SqlClient.SqlParameter("@UserId", userImage.UserId),
                 new System.Data.SqlClient.SqlParameter("@ModuleId", userImage.ModuleId),
                 new System.Data.SqlClient.SqlParameter("@TopColorHex", userImage.TopColorHex));
@@ -94,7 +94,7 @@ namespace picturpictur.Data
             return new UserImage
             {
                 ImageId = Null.SetNullInteger(reader["ImageId"]),
-                FileName = Null.SetNullString(reader["FileName"]),
+                FileId = Null.SetNullInteger(reader["FileId"]),
                 UserId = Null.SetNullInteger(reader["UserId"]),
                 ModuleId = Null.SetNullInteger(reader["ModuleId"]),
                 TopColorHex = Null.SetNullString(reader["TopColorHex"]),
