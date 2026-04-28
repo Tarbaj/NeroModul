@@ -1,0 +1,34 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<picturpictur.Models.UserImage>
+
+<div class="pictur-edit-container">
+    <div class="dnnForm">
+        <h2 class="dnnFormSectionHead">Új kép feltöltése</h2>
+        
+        @using (Html.BeginForm("Edit", "Image", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <fieldset>
+                <div class="dnnFormItem">
+                    <label for="attachment">Válasszon egy képet (JPG vagy PNG):</label>
+                    <input type="file" name="attachment" id="attachment" accept=".jpg,.jpeg,.png" required />
+                    <div class="dnnFormMessage dnnFormInfo">
+                        Maximum fájlméret: 10 MB
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="dnnActions dnnClear">
+                <button type="submit" class="dnnPrimaryAction">Feltöltés és mentés</button>
+                <a href="@Url.Action("Index", "Image")" class="dnnSecondaryAction">Mégse</a>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .pictur-edit-container { padding: 20px; }
+    .dnnFormItem label { display: block; margin-bottom: 10px; font-weight: bold; }
+    .dnnFormItem input[type="file"] { margin-bottom: 15px; }
+    .dnnActions { margin-top: 20px; border-top: 1px solid #ccc; padding-top: 20px; }
+</style>

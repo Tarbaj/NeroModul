@@ -10,6 +10,10 @@
     </file>
     <file>
       <path>Views/Image/</path>
+      <name>Edit.cshtml</name>
+    </file>
+    <file>
+      <path>Views/Image/</path>
       <name>Index.cshtml</name>
     </file>
     <file>
