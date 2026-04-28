@@ -10,11 +10,11 @@
     </file>
     <file>
       <path>Views/Image/</path>
-      <name>Edit.cshtml</name>
+      <name>Index.cshtml</name>
     </file>
     <file>
       <path>Views/Image/</path>
-      <name>Index.cshtml</name>
+      <name>Selected.cshtml</name>
     </file>
     <file>
       <path>Views/</path>

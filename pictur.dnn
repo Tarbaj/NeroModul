@@ -1,36 +1,43 @@
 <dotnetnuke type="Package" version="5.0">
   <packages>
-    <package name="pictur" type="Module" version="00.00.05">
+    <package name="pictur" type="Module" version="00.00.06">
+		
       <friendlyName>pictur</friendlyName>
       <description>pictur</description>
       <iconFile>~/Icons/Sigma/Software_32X32_Standard.png</iconFile>
-      <owner>
+      
+		<owner>
         <name>Nero</name>
         <organization>Nero</organization>
         <url>http://dnndev.me</url>
         <email>bence.tarbaj@stud.uni-corvinus.hu</email>
       </owner>
+		
       <license src="License.txt"></license>
       <releaseNotes src="ReleaseNotes.txt"></releaseNotes>
+		
       <dependencies>
         <dependency type="CoreVersion">09.08.00</dependency>
       </dependencies>
+		
       <components>
         <component type="Script">
           <scripts>
             <basePath>DesktopModules\MVC\pictur</basePath>
             <script type="Install">
               <path>Providers\DataProviders\SqlDataProvider</path>
-              <name>00.00.05.SqlDataProvider</name>
-              <version>00.00.05</version>
+              <name>00.00.06.SqlDataProvider</name>
+              <version>00.00.06</version>
             </script>
+			  
             <script type="UnInstall">
               <path>Providers\DataProviders\SqlDataProvider</path>
               <name>Uninstall.SqlDataProvider</name>
-              <version>00.00.05</version>
+              <version>00.00.06</version>
             </script>
           </scripts>
         </component>
+		  
         <component type="ResourceFile">
           <resourceFiles>
             <basePath>DesktopModules/MVC/pictur</basePath>
@@ -39,6 +46,7 @@
             </resourceFile>
           </resourceFiles>
         </component>
+		  
         <component type="Module">
           <desktopModule>
             <moduleName>pictur</moduleName>
@@ -60,6 +68,7 @@
                     <helpUrl />
                     <viewOrder>0</viewOrder>
                   </moduleControl>
+					
                   <moduleControl>
                     <controlKey>Edit</controlKey>
                     <controlSrc>picturpictur.Controllers/Image/Index.mvc</controlSrc>
@@ -71,6 +80,7 @@
                     <viewOrder>0</viewOrder>
                     <supportsPopUps>True</supportsPopUps>
                   </moduleControl>
+					
                   <moduleControl>
                     <controlKey>Settings</controlKey>
                     <controlSrc>picturpictur.Controllers.SettingsController, Settings.mvc</controlSrc>

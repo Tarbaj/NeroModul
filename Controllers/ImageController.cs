@@ -99,24 +99,25 @@ namespace picturpictur.Controllers
             }
         }
 
+        //[HttpGet]
+        //public ActionResult Delete(int id)
+        //{
+        //    try
+        //    {
+        //        var userImage = _imageService.GetImage(id);
+        //        return View(userImage);
+        //    }
+        //    catch (ArgumentException)
+        //    {
+        //        return RedirectToDefaultRoute();
+        //    }
+        //}
+
+        //[HttpPost]
+        //[System.Web.Mvc.ValidateAntiForgeryToken]
+        //[ActionName("Delete")]
         [HttpGet]
         public ActionResult Delete(int id)
-        {
-            try
-            {
-                var userImage = _imageService.GetImage(id);
-                return View(userImage);
-            }
-            catch (ArgumentException)
-            {
-                return RedirectToDefaultRoute();
-            }
-        }
-
-        [HttpPost]
-        [System.Web.Mvc.ValidateAntiForgeryToken]
-        [ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
         {
             try
             {

@@ -23,6 +23,11 @@ namespace picturpictur.Data
             _connectionString = Config.GetConnectionString();
             _databaseOwner = objProvider.Attributes["databaseOwner"];
             _objectQualifier = objProvider.Attributes["objectQualifier"];
+
+            if (!string.IsNullOrEmpty(_databaseOwner)&&!_databaseOwner.EndsWith("."))
+            {
+                _databaseOwner += ".";
+            }
         }
 
         private string GetFullyQualifiedName(string name)

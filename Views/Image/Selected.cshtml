@@ -1,0 +1,24 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<picturpictur.Models.UserImage>
+@@model picturpictur.Models.UserImage
+
+<div class="dnnForm">
+    <h2 class="dnnFormSectionHead">Kép</h2>
+
+    <div style="display: flex; gap: 30px; align-items: flex-start;">
+        <div class="img-preview">
+            <img src="/LinkClick.aspx?fileid=@Model.FileId&portalid=@Dnn.PortalSettings.PortalId"
+                 style="max-width: 600px; border: 8px solid @Model.TopColorHex;" />
+        </div>
+
+        <div class="img-meta">
+            <h3>Top szín: <span style="color: @Model.TopColorHex">@Model.TopColorHex</span></h3>
+            <div style="width: 100px; height: 100px; background-color: @Model.TopColorHex; border: 1px solid #000;"></div>
+
+            <div style="margin-top: 30px;">
+                <a href="@Url.Action("Delete", "Image", new { id = Model.ImageId })" class="dnnSecondaryAction">Kép törlése</a>
+                <br /><br />
+                <a href="@Url.Action("Index", "Image")" class="dnnTertiaryAction">Vissza</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,23 +1,24 @@
-﻿@using DotNetNuke.Web.Mvc.Helpers
-@model IEnumerable<picturpictur.Models.UserImage>
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<IEnumerable<picturpictur.Models.UserImage>>
+@@model IEnumerable<picturpictur.Models.UserImage>
 
-    <div class="pictur-module">
-        <div class="header">
-            <h2>My Images</h2>
-            <a href="@Url.Action("Edit", "Image")" class="dnnPrimaryAction">Upload New Image</a>
+<div class="pictur-container">
+    <div class="dnnForm">
+        <h2 class="dnnFormSectionHead">Feltöltött képek</h2>
+        <div style="margin-bottom: 20px;">
+            <a href="@Url.Action("Edit", "Image")" class="dnnPrimaryAction">Új kép feltöltése</a>
         </div>
 
-        <div class="image-grid" style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
-            @foreach (var item in Model)
+        <div style="display: flex; flex-wrap: wrap; gap: 15px;">
+            @foreach (var img in Model)
             {
-                <div class="image-item" style="border: 1px solid #ccc; padding: 10px; text-align: center;">
-                    <a href="@Url.Action("Selected", "Image", new { id = item.ImageId })">
-                        @* Note: You may need a helper to convert FileId to a URL *@
-                        <img src="/LinkClick.aspx?fileid=@item.FileId&portalid=@Dnn.PortalSettings.PortalId"
-                             style="width: 150px; height: 150px; object-fit: cover;" />
+                <div style="border: 1px solid #ccc; padding: 10px; width: 150px; text-align: center; position: relative;">
+                    <a href="@Url.Action("Selected", "Image", new { id = img.ImageId })">
+                        <img src="/LinkClick.aspx?fileid=@img.FileId&portalid=@Dnn.PortalSettings.PortalId"
+                             style="width: 130px; height: 130px; object-fit: cover;" />
                     </a>
-                    <div style="margin-top: 5px; height: 10px; background-color: @item.TopColorHex;"></div>
+                    <div style="height: 10px; margin-top: 5px; background-color: @img.TopColorHex;" title="Top szín: @img.TopColorHex"></div>
                 </div>
             }
         </div>
     </div>
+</div>

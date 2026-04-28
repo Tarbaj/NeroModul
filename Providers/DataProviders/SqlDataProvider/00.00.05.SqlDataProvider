@@ -83,7 +83,7 @@ IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwne
 GO
 
 CREATE PROCEDURE {databaseOwner}[{objectQualifier}pictur_Images_AddImage]
-    @FileName       NVARCHAR(255),
+    @FileId         INT,
     @UserId         INT,
     @ModuleId       INT,
     @TopColorHex    NVARCHAR(7)
@@ -92,9 +92,9 @@ BEGIN
     SET NOCOUNT ON;
 
     INSERT INTO {databaseOwner}[{objectQualifier}pictur_Images]
-        (FileName, UserId, ModuleId, TopColorHex, CreatedOnDate)
+        (FileId, UserId, ModuleId, TopColorHex, CreatedOnDate)
     VALUES
-        (@FileName, @UserId, @ModuleId, @TopColorHex, GETDATE());
+        (@FileId, @UserId, @ModuleId, @TopColorHex, GETDATE());
 
     SELECT SCOPE_IDENTITY();
 END

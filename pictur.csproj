@@ -83,7 +83,9 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Core" />
+    <Reference Include="System.Core">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -175,12 +177,14 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Image\Index.cshtml" />
-    <Content Include="Views\Image\Edit.cshtml" />
+    <Content Include="Views\Image\Selected.cshtml" />
     <Content Include="Views\Settings\Settings.cshtml" />
     <Content Include="Providers\DataProviders\SqlDataProvider\00.00.02.SqlDataProvider" />
     <Content Include="Providers\DataProviders\SqlDataProvider\00.00.03.SqlDataProvider" />
     <Content Include="Providers\DataProviders\SqlDataProvider\00.00.04.SqlDataProvider" />
     <Content Include="Providers\DataProviders\SqlDataProvider\00.00.05.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\00.00.06.SqlDataProvider" />
+    <None Include="Views\Image\Delete.cshtml.old" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
