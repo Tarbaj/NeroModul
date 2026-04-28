@@ -41,7 +41,7 @@ namespace picturpictur.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var images = _imageService.GetUserImages(ModuleContext.ModuleId, User.UserID);
+            var images = _imageService.GetUserImages(ModuleContext.ModuleId);
             return View(images);
         }
 

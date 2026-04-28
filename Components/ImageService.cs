@@ -19,9 +19,9 @@ namespace picturpictur.Components
         {
         }
 
-        public IEnumerable<UserImage> GetUserImages(int moduleId, int userId)
+        public IEnumerable<UserImage> GetUserImages(int moduleId)
         {
-            return _repository.GetImages(moduleId, userId)
+            return _repository.GetImages(moduleId)
                 .OrderBy(e => e.CreatedOnDate);
         }
 

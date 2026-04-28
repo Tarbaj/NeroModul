@@ -34,7 +34,7 @@ namespace picturpictur.Data
         {
             return _databaseOwner + _objectQualifier + "pictur_Images_" + name;
         }
-        public IEnumerable<UserImage> GetImages(int moduleId, int userId)
+        public IEnumerable<UserImage> GetImages(int moduleId)
         {
             var images = new List<UserImage>();
 
@@ -42,8 +42,7 @@ namespace picturpictur.Data
                 _connectionString,
                 CommandType.StoredProcedure,
                 GetFullyQualifiedName("GetImages"),
-                new System.Data.SqlClient.SqlParameter("@ModuleId", moduleId),
-                new System.Data.SqlClient.SqlParameter("@UserId", userId)))
+                new System.Data.SqlClient.SqlParameter("@ModuleId", moduleId)))
             {
                 while (reader.Read())
                 {

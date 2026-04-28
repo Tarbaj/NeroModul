@@ -10,7 +10,7 @@ namespace picturpictur.Data
 {
     public interface IImageDataRepository
     {
-        IEnumerable<UserImage> GetImages(int moduleId, int userId);
+        IEnumerable<UserImage> GetImages(int moduleId);
         UserImage GetImage(int imageId);
         int AddImage(UserImage image);
         void DeleteImage(int imageId);
