@@ -30,11 +30,12 @@ namespace picturpictur.Controllers
     public class ImageController : DnnController
     {
         private readonly ImageService _imageService;
-        private readonly ImageProcessor _processor = new ImageProcessor();
+        private readonly ImageProcessor _processor;
 
         public ImageController()
         {
             _imageService = new ImageService();
+            _processor = new ImageProcessor();
         }
 
         [HttpGet]

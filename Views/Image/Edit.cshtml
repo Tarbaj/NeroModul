@@ -1,5 +1,9 @@
 ﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<picturpictur.Models.UserImage>
 
+@{
+    Dnn.ModuleContext.Actions = null;
+}
+
 <div class="pictur-edit-container">
     <div class="dnnForm">
         <h2 class="dnnFormSectionHead">Új kép feltöltése</h2>
@@ -7,6 +11,7 @@
         @using (Html.BeginForm("Edit", "Image", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.ImageId)
 
             <fieldset>
                 <div class="dnnFormItem">
