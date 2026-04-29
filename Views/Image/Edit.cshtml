@@ -1,39 +1,22 @@
 ﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<picturpictur.Models.UserImage>
 
-@{
-    Dnn.ModuleContext.Actions = null;
-}
+<div class="dnnForm">
+    <h2 class="dnnFormSectionHead">Új kép feltöltése</h2>
 
-<div class="pictur-edit-container">
-    <div class="dnnForm">
-        <h2 class="dnnFormSectionHead">Új kép feltöltése</h2>
-        
-        @using (Html.BeginForm("Edit", "Image", FormMethod.Post, new { enctype = "multipart/form-data" }))
-        {
-            @Html.AntiForgeryToken()
-            @Html.HiddenFor(m => m.ImageId)
+    <form action="@Url.Action("Edit", "Image")" method="post" enctype="multipart/form-data">
 
-            <fieldset>
-                <div class="dnnFormItem">
-                    <label for="attachment">Válasszon egy képet (JPG vagy PNG):</label>
-                    <input type="file" name="attachment" id="attachment" accept=".jpg,.jpeg,.png" required />
-                    <div class="dnnFormMessage dnnFormInfo">
-                        Maximum fájlméret: 10 MB
-                    </div>
-                </div>
-            </fieldset>
+        @Html.AntiForgeryToken()
 
-            <div class="dnnActions dnnClear">
-                <button type="submit" class="dnnPrimaryAction">Feltöltés és mentés</button>
-                <a href="@Url.Action("Index", "Image")" class="dnnSecondaryAction">Mégse</a>
+        <fieldset>
+            <div class="dnnFormItem">
+                <label>Válasszon egy képet:</label>
+                <input type="file" name="attachment" id="attachment" required />
             </div>
-        }
-    </div>
-</div>
+        </fieldset>
 
-<style>
-    .pictur-edit-container { padding: 20px; }
-    .dnnFormItem label { display: block; margin-bottom: 10px; font-weight: bold; }
-    .dnnFormItem input[type="file"] { margin-bottom: 15px; }
-    .dnnActions { margin-top: 20px; border-top: 1px solid #ccc; padding-top: 20px; }
-</style>
+        <div class="dnnActions dnnClear">
+            <button type="submit" class="dnnPrimaryAction">Feltöltés</button>
+            <a href="@Url.Action("Index", "Image")" class="dnnSecondaryAction">Mégse</a>
+        </div>
+    </form>
+</div>

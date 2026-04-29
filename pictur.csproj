@@ -84,7 +84,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core">
-      <Private>True</Private>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
@@ -95,6 +95,7 @@
     <Reference Include="System.Web.Mvc, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\bin\System.Web.Mvc.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\bin\System.Web.Razor.dll</HintPath>
@@ -190,6 +191,7 @@
     <Content Include="Providers\DataProviders\SqlDataProvider\00.00.10.SqlDataProvider" />
     <Content Include="Providers\DataProviders\SqlDataProvider\00.00.11.SqlDataProvider" />
     <Content Include="Providers\DataProviders\SqlDataProvider\00.00.12.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\00.00.13.SqlDataProvider" />
     <None Include="Views\Image\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
