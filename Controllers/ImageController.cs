@@ -66,7 +66,6 @@ namespace picturpictur.Controllers
         }
 
         [HttpPost]
-        [System.Web.Mvc.ValidateAntiForgeryToken]
         public ActionResult Edit(HttpPostedFileBase attachment)
         {
             try
@@ -122,6 +121,8 @@ namespace picturpictur.Controllers
         {
             try
             {
+                var imageToDelete = _imageService.GetImage(id);
+                _processor.DeleteImage(imageToDelete.FileId);
                 _imageService.DeleteImage(id);
             }
             catch (ArgumentException ex)

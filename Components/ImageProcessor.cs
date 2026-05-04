@@ -8,6 +8,7 @@ using System.Web;
 using DotNetNuke.Entities.Portals;
 using DotNetNuke.Services.FileSystem;
 using System.IO;
+using picturpictur.Data;
 
 namespace picturpictur.Components
 {
@@ -64,6 +65,10 @@ namespace picturpictur.Components
             if (fileInfo != null)
             {
                 FileManager.Instance.DeleteFile(fileInfo);
+                if (System.IO.File.Exists(fileInfo.PhysicalPath))
+                {
+                    System.IO.File.Delete(fileInfo.PhysicalPath);
+                }
             }
         }
     }
