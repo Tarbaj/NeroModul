@@ -29,7 +29,30 @@ namespace picturpictur.Data
                 _databaseOwner += ".";
             }
         }
+        public string GetProductBvin(string topColor)
+        {
+            string bvin = string.Empty;
+            try
+            {
+                using (IDataReader reader = SqlHelper.ExecuteReader(
+                _connectionString,
+                CommandType.StoredProcedure,
+                _databaseOwner + _objectQualifier + "hcc_Product_GetRandomByColorName",
+                new System.Data.SqlClient.SqlParameter("@ColorName", topColor)))
+                {
+                    if (reader.Read())
+                    {
+                        bvin = Null.SetNullString(reader["bvin"]);
+                    }
+                }
+            }
+            catch (Exception)
+            {
 
+                throw;
+            }
+            return bvin;
+        }
         private string GetFullyQualifiedName(string name)
         {
             return _databaseOwner + _objectQualifier + "pictur_Images_" + name;
@@ -81,7 +104,8 @@ namespace picturpictur.Data
                 new System.Data.SqlClient.SqlParameter("@UserId", userImage.UserId),
                 new System.Data.SqlClient.SqlParameter("@ModuleId", userImage.ModuleId),
                 new System.Data.SqlClient.SqlParameter("@TopColorHex", userImage.TopColorHex),
-                new System.Data.SqlClient.SqlParameter("@TopColor", userImage.TopColor));
+                new System.Data.SqlClient.SqlParameter("@TopColor", userImage.TopColor),
+                new System.Data.SqlClient.SqlParameter("@Bvin", userImage.Bvin));
 
             return Convert.ToInt32(result);
         }
@@ -105,6 +129,7 @@ namespace picturpictur.Data
                 ModuleId = Null.SetNullInteger(reader["ModuleId"]),
                 TopColorHex = Null.SetNullString(reader["TopColorHex"]),
                 TopColor = Null.SetNullString(reader["TopColor"]),
+                Bvin = Null.SetNullString(reader["bvin"]),
                 CreatedOnDate = Null.SetNullDateTime(reader["CreatedOnDate"])
             };
         }

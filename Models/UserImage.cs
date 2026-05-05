@@ -19,7 +19,7 @@ namespace picturpictur.Models
         public string TopColorHex { get; set; }
 
         public string TopColor { get; set; }
-
+        public string Bvin { get; set; }
         public DateTime CreatedOnDate { get; set; }
     }
 }
