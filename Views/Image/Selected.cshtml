@@ -1,22 +1,50 @@
-﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<picturpictur.Models.UserImage>
+﻿@using DotNetNuke.Services.FileSystem
+@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<picturpictur.Models.UserImage>
+
+@{
+    var file = FileManager.Instance.GetFile(Model.FileId);
+    var imageUrl = file != null ? FileManager.Instance.GetUrl(file) : "";
+
+    // Opcionális: Hex kód visszakódolása névvé (ha a modelben csak a Hex van meg)
+    // Megjegyzés: Ez a lista egyezzen meg azzal, amit a Controllerben használsz!
+    var colorNames = new Dictionary<string, string>
+{
+        { "#E32219", "Piros" }, { "#215EDB", "Kék" }, { "#E8C69F", "Nude" },
+        { "#F9B7C2", "Rózsaszín" }, { "#EB3494", "Pink" }, { "#FFFFFF", "Fehér" },
+        { "#7D1FC7", "Lila" }, { "#19A337", "Zöld" }, { "#98DEC2", "Menta" },
+        { "#FF6F00", "Narancs" }, { "#FFB38A", "Barack" }, { "#632D08", "Barna" },
+        { "#6E7582", "Szürke" }, { "#C79E44", "Arany" }, { "#BABABA", "Ezüst" }
+    };
+
+    var displayName = colorNames.ContainsKey(Model.TopColorHex.ToUpper())
+                      ? colorNames[Model.TopColorHex.ToUpper()]
+                      : Model.TopColorHex;
+}
 
 <div class="dnnForm">
-    <h2 class="dnnFormSectionHead">Kép</h2>
+    <h2 class="dnnFormSectionHead">Kép részletei</h2>
 
-    <div style="display: flex; gap: 30px; align-items: flex-start;">
+    <div style="display: flex; gap: 30px; align-items: flex-start; padding: 20px;">
         <div class="img-preview">
-            <img src="/LinkClick.aspx?fileid=@Model.FileId&portalid=@Dnn.PortalSettings.PortalId"
-                 style="max-width: 600px; border: 8px solid @Model.TopColorHex;" />
+            <img src="@imageUrl"
+                 alt="Kiválasztott kép"
+                 style="max-width: 600px; border: 8px solid @Model.TopColorHex; box-shadow: 0 4px 8px rgba(0,0,0,0.2);" />
         </div>
 
         <div class="img-meta">
-            <h3>Top szín: <span style="color: @Model.TopColorHex">@Model.TopColorHex</span></h3>
-            <div style="width: 100px; height: 100px; background-color: @Model.TopColorHex; border: 1px solid #000;"></div>
+            <h3>Domináns szín: <span>@displayName</span></h3>
 
-            <div style="margin-top: 30px;">
-                <a href="@Url.Action("Delete", "Image", new { id = Model.ImageId })" class="dnnSecondaryAction">Kép törlése</a>
+            <div style="width: 120px; height: 120px; background-color: @Model.TopColorHex; border: 2px solid #333; border-radius: 4px;"></div>
+            <p style="margin-top: 5px; color: #666;">Hex kód: @Model.TopColorHex</p>
+
+            <div style="margin-top: 40px;">
+                <a href="@Url.Action("Delete", "Image", new { id = Model.ImageId })"
+                   class="dnnSecondaryAction"
+                   onclick="return confirm('Biztosan törölni szeretnéd ezt a képet?');">Kép törlése</a>
+
                 <br /><br />
-                <a href="@Url.Action("Index", "Image")" class="dnnTertiaryAction">Vissza</a>
+
+                <a href="@Url.Action("Index", "Image")" class="dnnTertiaryAction">← Vissza a listához</a>
             </div>
         </div>
     </div>

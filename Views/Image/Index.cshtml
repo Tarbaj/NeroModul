@@ -7,19 +7,16 @@
             <a href="@Url.Action("Edit", "Image")" class="dnnPrimaryAction">Új kép feltöltése</a>
         </div>
 
-        @using DotNetNuke.Services.FileSystem @* Szükséges a FileManager-hez *@
+        @using DotNetNuke.Services.FileSystem
 
         <div style="display: flex; flex-wrap: wrap; gap: 15px;">
             @foreach (var img in Model)
             {
-                // Lekérjük a fájl adatait a FileId alapján
                 var file = FileManager.Instance.GetFile(img.FileId);
-                // Ha a fájl létezik, lekérjük a publikus URL-jét, egyébként üres string
                 var imageUrl = file != null ? FileManager.Instance.GetUrl(file) : "";
 
                 <div style="border: 1px solid #ccc; padding: 10px; width: 150px; text-align: center; position: relative;">
                     <a href="@Url.Action("Selected", "Image", new { id = img.ImageId })">
-                        @* A LinkClick helyett a közvetlen URL-t használjuk *@
                         <img src="@imageUrl"
                              alt="Kép"
                              style="width: 130px; height: 130px; object-fit: cover;" />
