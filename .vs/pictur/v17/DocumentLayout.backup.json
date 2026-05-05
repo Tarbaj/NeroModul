@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "C:\\inetpub\\wwwroot\\dnn-dev\\DesktopModules\\MVC\\pictur\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|pictur.csproj|C:\\inetpub\\wwwroot\\dnn-dev\\DesktopModules\\MVC\\pictur\\components\\imageprocessor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|pictur.csproj|c:\\inetpub\\wwwroot\\dnn-dev\\desktopmodules\\mvc\\pictur\\components\\imageprocessor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|pictur.csproj|solutionrelative:components\\imageprocessor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|pictur.csproj|C:\\inetpub\\wwwroot\\dnn-dev\\DesktopModules\\MVC\\pictur\\controllers\\imagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|pictur.csproj|solutionrelative:controllers\\imagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|pictur.csproj|c:\\inetpub\\wwwroot\\dnn-dev\\desktopmodules\\mvc\\pictur\\views\\image\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|pictur.csproj|C:\\inetpub\\wwwroot\\dnn-dev\\DesktopModules\\MVC\\pictur\\views\\image\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|pictur.csproj|solutionrelative:views\\image\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|pictur.csproj|C:\\inetpub\\wwwroot\\dnn-dev\\DesktopModules\\MVC\\pictur\\providers\\dataproviders\\sqldataprovider\\00.00.14.sqldataprovider||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|pictur.csproj|solutionrelative:providers\\dataproviders\\sqldataprovider\\00.00.14.sqldataprovider||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,50 +18,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\inetpub\\wwwroot\\dnn-dev\\DesktopModules\\MVC\\pictur\\Views\\Image\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Image\\Index.cshtml",
-              "ToolTip": "C:\\inetpub\\wwwroot\\dnn-dev\\DesktopModules\\MVC\\pictur\\Views\\Image\\Index.cshtml",
-              "RelativeToolTip": "Views\\Image\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-04T13:47:01.455Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "00.00.14.SqlDataProvider",
-              "DocumentMoniker": "C:\\inetpub\\wwwroot\\dnn-dev\\DesktopModules\\MVC\\pictur\\Providers\\DataProviders\\SqlDataProvider\\00.00.14.SqlDataProvider",
-              "RelativeDocumentMoniker": "Providers\\DataProviders\\SqlDataProvider\\00.00.14.SqlDataProvider",
-              "ToolTip": "C:\\inetpub\\wwwroot\\dnn-dev\\DesktopModules\\MVC\\pictur\\Providers\\DataProviders\\SqlDataProvider\\00.00.14.SqlDataProvider",
-              "RelativeToolTip": "Providers\\DataProviders\\SqlDataProvider\\00.00.14.SqlDataProvider",
-              "ViewState": "AgIAADMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-05-04T11:44:07.959Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ImageController.cs",
-              "DocumentMoniker": "C:\\inetpub\\wwwroot\\dnn-dev\\DesktopModules\\MVC\\pictur\\Controllers\\ImageController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ImageController.cs",
-              "ToolTip": "C:\\inetpub\\wwwroot\\dnn-dev\\DesktopModules\\MVC\\pictur\\Controllers\\ImageController.cs",
-              "RelativeToolTip": "Controllers\\ImageController.cs",
-              "ViewState": "AgIAAGwAAAAAwszMzMz8v3wAAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-29T06:42:56.341Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -78,9 +28,26 @@
               "RelativeDocumentMoniker": "Components\\ImageProcessor.cs",
               "ToolTip": "C:\\inetpub\\wwwroot\\dnn-dev\\DesktopModules\\MVC\\pictur\\Components\\ImageProcessor.cs*",
               "RelativeToolTip": "Components\\ImageProcessor.cs*",
-              "ViewState": "AgIAACoAAACAMzMzMzMawEYAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAgwD0AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-04T11:47:09.978Z",
+              "WhenOpened": "2026-05-05T19:24:23.852Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\inetpub\\wwwroot\\dnn-dev\\DesktopModules\\MVC\\pictur\\Views\\Image\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Image\\Index.cshtml",
+              "ToolTip": "C:\\inetpub\\wwwroot\\dnn-dev\\DesktopModules\\MVC\\pictur\\Views\\Image\\Index.cshtml",
+              "RelativeToolTip": "Views\\Image\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-04T13:47:01.455Z",
               "EditorCaption": ""
             }
           ]
