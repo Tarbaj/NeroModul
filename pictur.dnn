@@ -1,6 +1,6 @@
 <dotnetnuke type="Package" version="5.0">
   <packages>
-    <package name="pictur" type="Module" version="00.00.14">
+    <package name="pictur" type="Module" version="00.00.15">
 		
       <friendlyName>pictur</friendlyName>
       <description>pictur</description>
@@ -26,14 +26,14 @@
             <basePath>DesktopModules\MVC\pictur</basePath>
             <script type="Install">
               <path>Providers\DataProviders\SqlDataProvider</path>
-              <name>00.00.14.SqlDataProvider</name>
-              <version>00.00.14</version>
+              <name>00.00.15.SqlDataProvider</name>
+              <version>00.00.15</version>
             </script>
 			  
             <script type="UnInstall">
               <path>Providers\DataProviders\SqlDataProvider</path>
               <name>Uninstall.SqlDataProvider</name>
-              <version>00.00.14</version>
+              <version>00.00.15</version>
             </script>
           </scripts>
         </component>

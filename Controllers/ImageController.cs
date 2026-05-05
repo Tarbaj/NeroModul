@@ -72,6 +72,7 @@ namespace picturpictur.Controllers
             {
                 int fileId = 0;
                 string topColorHex = "#000000";
+                string topColor = "Fehér";
                 if (attachment != null && attachment.ContentLength > 0)
                 {
                     var allowed = new[] { "image/jpeg", "image/png" };
@@ -80,14 +81,15 @@ namespace picturpictur.Controllers
                         return RedirectToDefaultRoute();
                     }
                     fileId = _processor.UploadImage(attachment, PortalSettings.PortalId);
-                    topColorHex = _processor.GetTopColor(attachment.InputStream);
+                    (topColorHex, topColor) = _processor.GetTopColor(attachment.InputStream);
                 }
                 var userImage = new UserImage()
                 {
                     FileId          = fileId,
                     UserId          = User.UserID,
                     ModuleId        = ModuleContext.ModuleId,
-                    TopColorHex     = topColorHex
+                    TopColorHex     = topColorHex,
+                    TopColor        = topColor
                 };
 
                 _imageService.CreateImage(userImage);
@@ -99,23 +101,6 @@ namespace picturpictur.Controllers
             }
         }
 
-        //[HttpGet]
-        //public ActionResult Delete(int id)
-        //{
-        //    try
-        //    {
-        //        var userImage = _imageService.GetImage(id);
-        //        return View(userImage);
-        //    }
-        //    catch (ArgumentException)
-        //    {
-        //        return RedirectToDefaultRoute();
-        //    }
-        //}
-
-        //[HttpPost]
-        //[System.Web.Mvc.ValidateAntiForgeryToken]
-        //[ActionName("Delete")]
         [HttpGet]
         public ActionResult Delete(int id)
         {

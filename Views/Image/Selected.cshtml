@@ -4,21 +4,6 @@
 @{
     var file = FileManager.Instance.GetFile(Model.FileId);
     var imageUrl = file != null ? FileManager.Instance.GetUrl(file) : "";
-
-    // Opcionális: Hex kód visszakódolása névvé (ha a modelben csak a Hex van meg)
-    // Megjegyzés: Ez a lista egyezzen meg azzal, amit a Controllerben használsz!
-    var colorNames = new Dictionary<string, string>
-{
-        { "#E32219", "Piros" }, { "#215EDB", "Kék" }, { "#E8C69F", "Nude" },
-        { "#F9B7C2", "Rózsaszín" }, { "#EB3494", "Pink" }, { "#FFFFFF", "Fehér" },
-        { "#7D1FC7", "Lila" }, { "#19A337", "Zöld" }, { "#98DEC2", "Menta" },
-        { "#FF6F00", "Narancs" }, { "#FFB38A", "Barack" }, { "#632D08", "Barna" },
-        { "#6E7582", "Szürke" }, { "#C79E44", "Arany" }, { "#BABABA", "Ezüst" }
-    };
-
-    var displayName = colorNames.ContainsKey(Model.TopColorHex.ToUpper())
-                      ? colorNames[Model.TopColorHex.ToUpper()]
-                      : Model.TopColorHex;
 }
 
 <div class="dnnForm">
@@ -32,7 +17,7 @@
         </div>
 
         <div class="img-meta">
-            <h3>Domináns szín: <span>@displayName</span></h3>
+            <h3>Domináns szín: <span>@Model.TopColor</span></h3>
 
             <div style="width: 120px; height: 120px; background-color: @Model.TopColorHex; border: 2px solid #333; border-radius: 4px;"></div>
             <p style="margin-top: 5px; color: #666;">Hex kód: @Model.TopColorHex</p>

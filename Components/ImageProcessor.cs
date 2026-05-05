@@ -54,7 +54,7 @@ namespace picturpictur.Components
             }
             return closestName;
         }
-        public string GetTopColor(System.IO.Stream stream)
+        public (string, string) GetTopColor(System.IO.Stream stream)
         {
             if (stream.CanSeek) stream.Position = 0;
 
@@ -76,7 +76,7 @@ namespace picturpictur.Components
                     }
                 });
                 var winningName = colorCounts.OrderByDescending(x => x.Value).First().Key;
-                return Palette[winningName].Hex;
+                return (Palette[winningName].Hex, winningName);
             }
         }
 
