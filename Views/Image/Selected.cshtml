@@ -6,31 +6,46 @@
     var imageUrl = file != null ? FileManager.Instance.GetUrl(file) : "";
 }
 
-<div class="dnnForm">
-    <h2 class="dnnFormSectionHead">Kép részletei</h2>
-
-    <div style="display: flex; gap: 30px; align-items: flex-start; padding: 20px;">
-        <div class="img-preview">
-            <img src="@imageUrl"
-                 alt="Kiválasztott kép"
-                 style="max-width: 600px; border: 8px solid @Model.TopColorHex; box-shadow: 0 4px 8px rgba(0,0,0,0.2);" />
+<div class="pictur-shell">
+    <header class="pictur-page-head">
+        <div>
+            <p class="pictur-kicker">Részletek</p>
+            <h1>Kép elemzése</h1>
         </div>
+        <a href="@Url.Action("Index", "Image")" class="pictur-button pictur-button-secondary">
+            Vissza a listához
+        </a>
+    </header>
 
-        <div class="img-meta">
-            <h3>Domináns szín: <span>@Model.TopColor</span></h3>
+    <div class="pictur-detail-layout">
+        <figure class="pictur-detail-figure" style="border-color: @Model.TopColorHex;">
+            <img src="@imageUrl" alt="Kiválasztott kép" />
+        </figure>
 
-            <div style="width: 120px; height: 120px; background-color: @Model.TopColorHex; border: 2px solid #333; border-radius: 4px;"></div>
-            <p style="margin-top: 5px; color: #666;">Hex kód: @Model.TopColorHex</p>
-
-            <div style="margin-top: 40px;">
-                <a href="@Url.Action("Delete", "Image", new { id = Model.ImageId })"
-                   class="dnnSecondaryAction"
-                   onclick="return confirm('Biztosan törölni szeretnéd ezt a képet?');">Kép törlése</a>
-
-                <br /><br />
-
-                <a href="@Url.Action("Index", "Image")" class="dnnTertiaryAction">← Vissza a listához</a>
+        <aside class="pictur-detail-panel">
+            <div class="pictur-meta-group">
+                <p class="pictur-panel-label">Domináns szín</p>
+                <div class="pictur-color-readout">
+                    <span class="pictur-large-swatch" style="background-color: @Model.TopColorHex;"></span>
+                    <div>
+                        <strong>@Model.TopColor</strong><br />
+                        <span style="opacity: 0.7;">@Model.TopColorHex</span>
+                    </div>
+                </div>
             </div>
-        </div>
+
+            <div class="pictur-meta-group" style="margin-top: 32px;">
+                <p class="pictur-panel-label">Azonosító (BVIN)</p>
+                <p class="pictur-file-name">@Model.Bvin</p>
+            </div>
+
+            <div class="pictur-detail-actions">
+                <a href="@Url.Action("Delete", "Image", new { id = Model.ImageId })"
+                   class="pictur-button pictur-button-danger"
+                   onclick="return confirm('Biztosan törölni szeretné ezt a képet?');">
+                    Kép törlése
+                </a>
+            </div>
+        </aside>
     </div>
 </div>

@@ -1,22 +1,45 @@
 ﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<picturpictur.Models.UserImage>
 
-<div class="dnnForm">
-    <h2 class="dnnFormSectionHead">Új kép feltöltése</h2>
-
-    <form action="@Url.Action("Edit", "Image")" method="post" enctype="multipart/form-data">
-
-        @Html.AntiForgeryToken()
-
-        <fieldset>
-            <div class="dnnFormItem">
-                <label>Válasszon egy képet:</label>
-                <input type="file" name="attachment" id="attachment" required />
+<div class="pictur-shell">
+    <div class="pictur-upload-panel">
+        <header class="pictur-page-head">
+            <div>
+                <p class="pictur-kicker">Hozzáadás</p>
+                <h1>Új kép feltöltése</h1>
             </div>
-        </fieldset>
+        </header>
 
-        <div class="dnnActions dnnClear">
-            <button type="submit" class="dnnPrimaryAction">Feltöltés</button>
-            <a href="@Url.Action("Index", "Image")" class="dnnSecondaryAction">Mégse</a>
-        </div>
-    </form>
+        <form action="@Url.Action("Edit", "Image")" method="post" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+
+            <fieldset class="pictur-fieldset">
+                <legend>Média kiválasztása</legend>
+
+                <label for="attachment" class="pictur-file-drop" id="drop-zone">
+                    <span class="pictur-file-title">Kattintson a tallózáshoz</span>
+                    <span class="pictur-file-name" id="file-name-display">Nincs fájl kiválasztva</span>
+
+                    <span class="pictur-file-limit">Támogatott formátumok: JPG, PNG, WEBP</span>
+
+                    <input type="file" name="attachment" id="attachment" class="pictur-file-input" required accept="image/*" />
+                </label>
+            </fieldset>
+
+            <div class="pictur-actions">
+                <button type="submit" class="pictur-button pictur-button-primary">Feltöltés indítása</button>
+                <a href="@Url.Action("Index", "Image")" class="pictur-button pictur-button-secondary">Mégse</a>
+            </div>
+        </form>
+    </div>
 </div>
+
+<script>
+    document.getElementById('attachment').addEventListener('change', function (e) {
+        var fileName = e.target.files[0] ? e.target.files[0].name : "Nincs fájl kiválasztva";
+        document.getElementById('file-name-display').textContent = fileName;
+
+        if(e.target.files[0]) {
+            document.querySelector('.pictur-file-title').textContent = "Kép kiválasztva";
+        }
+    });
+</script>

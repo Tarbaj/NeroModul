@@ -1,29 +1,45 @@
-﻿﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<IEnumerable<picturpictur.Models.UserImage>>
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<IEnumerable<picturpictur.Models.UserImage>>
+@using DotNetNuke.Services.FileSystem
 
-<div class="pictur-container">
-    <div class="dnnForm">
-        <h2 class="dnnFormSectionHead">Feltöltött képek</h2>
-        <div style="margin-bottom: 20px;">
-            <a href="@Url.Action("Edit", "Image")" class="dnnPrimaryAction">Új kép feltöltése</a>
+<div class="pictur-shell">
+    <header class="pictur-page-head">
+        <div>
+            <p class="pictur-kicker">Galéria</p>
+            <h1>Feltöltött képek</h1>
         </div>
+        <a href="@Url.Action("Edit", "Image")" class="pictur-button pictur-button-primary">
+            Új kép feltöltése
+        </a>
+    </header>
 
-        @using DotNetNuke.Services.FileSystem
-
-        <div style="display: flex; flex-wrap: wrap; gap: 15px;">
+    @if (Model != null && Model.Any())
+    {
+        <div class="pictur-grid">
             @foreach (var img in Model)
             {
                 var file = FileManager.Instance.GetFile(img.FileId);
                 var imageUrl = file != null ? FileManager.Instance.GetUrl(file) : "";
 
-                <div style="border: 1px solid #ccc; padding: 10px; width: 150px; text-align: center; position: relative;">
-                    <a href="@Url.Action("Selected", "Image", new { id = img.ImageId })">
-                        <img src="@imageUrl"
-                             alt="Kép"
-                             style="width: 130px; height: 130px; object-fit: cover;" />
+                <article class="pictur-card">
+                    <a href="@Url.Action("Selected", "Image", new { id = img.ImageId })" class="pictur-card-link">
+                        <div class="pictur-image-frame">
+                            <img src="@imageUrl" alt="Kép" class="pictur-thumb" loading="lazy" />
+                        </div>
+
+                        <div class="pictur-card-meta">
+                            <span class="pictur-swatch" style="background-color: @img.TopColorHex;" title="Domináns szín: @img.TopColorHex"></span>
+                            <span>@img.TopColorHex</span>
+                        </div>
                     </a>
-                    <div style="height: 10px; margin-top: 5px; background-color: @img.TopColorHex;" title="Top szín: @img.TopColorHex"></div>
-                </div>
+                </article>
             }
         </div>
-    </div>
+    }
+    else
+    {
+        <div class="pictur-empty">
+            <h2>Nincsenek még feltöltött képei.</h2>
+            <a href="@Url.Action("Edit", "Image")" class="pictur-button">Kezdje el a feltöltést</a>
+        </div>
+    }
 </div>
