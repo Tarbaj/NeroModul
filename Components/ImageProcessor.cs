@@ -9,11 +9,14 @@ using DotNetNuke.Entities.Portals;
 using DotNetNuke.Services.FileSystem;
 using System.IO;
 using picturpictur.Data;
+using System.Net.Http;
 
 namespace picturpictur.Components
 {
     public class ImageProcessor
     {
+        private const string RemoveBgApiKey = "ZmoozV9Q1vqgDfV6FPUywabG";
+
         private static readonly Dictionary<string, (Rgb24 Color, string Hex)> Palette = new Dictionary<string, (Rgb24, string)>
         {
             { "Piros", (new Rgb24(227, 34, 25), "#E32219") },
@@ -56,9 +59,15 @@ namespace picturpictur.Components
         }
         public (string, string) GetTopColor(System.IO.Stream stream)
         {
-            if (stream.CanSeek) stream.Position = 0;
+            byte[] transparentImageBytes = RemoveBackground(stream);
 
-            using (Image<Rgb24> image = Image.Load<Rgb24>(stream))
+            Stream processStream = (transparentImageBytes != null)
+                                    ? new MemoryStream(transparentImageBytes)
+                                    : stream;
+
+            if (processStream.CanSeek) processStream.Position = 0;
+
+            using (Image<Rgba32> image = Image.Load<Rgba32>(processStream))
             {
                 var colorCounts = Palette.Keys.ToDictionary(name => name, name => 0);
                 image.Mutate(x => x.Resize(64, 64));
@@ -67,16 +76,54 @@ namespace picturpictur.Components
                 {
                     for (int y = 0; y < accessor.Height; y++)
                     {
-                        Span<Rgb24> pixelRow = accessor.GetRowSpan(y);
-                        foreach (ref Rgb24 pixel in pixelRow)
+                        Span<Rgba32> pixelRow = accessor.GetRowSpan(y);
+                        foreach (ref Rgba32 pixel in pixelRow)
                         {
-                            string closestName = FindClosestPaletteName(pixel);
+                            if (pixel.A == 0) continue;
+                            string closestName = FindClosestPaletteName(new Rgb24(pixel.R, pixel.G, pixel.B));
                             colorCounts[closestName]++;
                         }
                     }
                 });
-                var winningName = colorCounts.OrderByDescending(x => x.Value).First().Key;
+                var winner = colorCounts.OrderByDescending(x => x.Value).FirstOrDefault();
+                string winningName = (winner.Value > 0) ? winner.Key : "Fehér";
                 return (Palette[winningName].Hex, winningName);
+            }
+        }
+
+        private byte[] RemoveBackground(Stream inputStream)
+        {
+            try
+            {
+                if (inputStream.CanSeek) inputStream.Position = 0;
+
+                using (var client = new HttpClient())
+                using (var formData = new MultipartFormDataContent())
+                {
+                    client.DefaultRequestHeaders.Add("X-Api-Key", RemoveBgApiKey);
+
+                    byte[] data;
+                    using (var ms = new MemoryStream())
+                    {
+                        inputStream.CopyTo(ms);
+                        data = ms.ToArray();
+                    }
+
+                    formData.Add(new ByteArrayContent(data), "image_file", "product.jpg");
+                    formData.Add(new StringContent("auto"), "size");
+
+                    var response = client.PostAsync("https://api.remove.bg/v1.0/removebg", formData).GetAwaiter().GetResult();
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return response.Content.ReadAsByteArrayAsync().GetAwaiter().GetResult();
+                    }
+                    else return null;
+                }
+            }
+            catch
+            {
+                return null;
             }
         }
 
