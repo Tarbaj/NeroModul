@@ -10,4 +10,5 @@ DROP PROCEDURE IF EXISTS {databaseOwner}[{objectQualifier}pictur_Images_GetImage
 DROP PROCEDURE IF EXISTS {databaseOwner}[{objectQualifier}pictur_Images_GetImage]
 DROP PROCEDURE IF EXISTS {databaseOwner}[{objectQualifier}pictur_Images_AddImage]
 DROP PROCEDURE IF EXISTS {databaseOwner}[{objectQualifier}pictur_Images_DeleteImage]
+DROP PROCEDURE IF EXISTS {databaseOwner}[{objectQualifier}hcc_Product_GetRandomByColorName]
 GO

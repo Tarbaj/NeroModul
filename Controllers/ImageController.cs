@@ -1,16 +1,4 @@
-﻿/*
-' Copyright (c) 2026 Nero
-'  All rights reserved.
-' 
-' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
-' TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-' THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
-' CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-' DEALINGS IN THE SOFTWARE.
-' 
-*/
-
-using DotNetNuke.Entities.Users;
+﻿using DotNetNuke.Entities.Users;
 using DotNetNuke.Framework.JavaScriptLibraries;
 using DotNetNuke.Web.Mvc.Framework.ActionFilters;
 using DotNetNuke.Web.Mvc.Framework.Controllers;
@@ -23,6 +11,7 @@ using System.Web;
 using System.IO;
 using DotNetNuke.Security;
 using System.Diagnostics;
+using Hotcakes.Commerce;
 
 namespace picturpictur.Controllers
 {
@@ -116,5 +105,21 @@ namespace picturpictur.Controllers
             }
             return RedirectToDefaultRoute();
         }
+
+        //[HttpPost]
+        //public ActionResult AddtoCart(string bvin)
+        //{
+        //    var hccApp = HotcakesApplication.Current;
+        //    var product = hccApp.CatalogServices.Products.Find(bvin);
+        //    if (product != null)
+        //    {
+        //        var kosar = hccApp.OrderServices.CurrentShoppingCart();
+        //        var lineItem = product.ConvertToLineItem(hccApp, 1);
+
+        //        hccApp.OrderServices.AddItemToOrder(kosar, lineItem);
+        //    }
+
+        //    return RedirectToDefaultRoute();
+        //}
     }
 }

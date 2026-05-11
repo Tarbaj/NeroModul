@@ -53,6 +53,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\bin\DotNetNuke.Web.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="Hotcakes.Commerce, Version=3.9.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\bin\Hotcakes.Commerce.dll</HintPath>
+    </Reference>
+    <Reference Include="Hotcakes.Commerce.Dnn, Version=3.9.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\bin\Hotcakes.Commerce.Dnn.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ApplicationBlocks.Data, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\bin\Microsoft.ApplicationBlocks.Data.dll</HintPath>
@@ -195,6 +203,7 @@
     <Content Include="Providers\DataProviders\SqlDataProvider\00.00.14.SqlDataProvider" />
     <Content Include="Providers\DataProviders\SqlDataProvider\00.00.16.SqlDataProvider" />
     <Content Include="Providers\DataProviders\SqlDataProvider\00.00.15.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\00.00.17.SqlDataProvider" />
     <None Include="Views\Image\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

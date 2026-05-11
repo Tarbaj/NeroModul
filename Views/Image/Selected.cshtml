@@ -1,6 +1,12 @@
 ﻿@using DotNetNuke.Services.FileSystem
 @inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<picturpictur.Models.UserImage>
+@using Hotcakes.Commerce.Catalog
+@using Hotcakes.Commerce
+@{
+    var hccApp = HotcakesApplication.Current;
 
+    var product = hccApp.CatalogServices.Products.Find(Model.Bvin);
+}
 @{
     var file = FileManager.Instance.GetFile(Model.FileId);
     var imageUrl = file != null ? FileManager.Instance.GetUrl(file) : "";
@@ -36,13 +42,16 @@
 
             <div class="pictur-meta-group" style="margin-top: 32px;">
                 <p class="pictur-panel-label">Azonosító (BVIN)</p>
-                <p class="pictur-file-name">@Model.Bvin</p>
+                <a href="//nerokozmetika.hu/#/products/@Model.Bvin">
+                    <p class="pictur-file-name">@Model.Bvin</p>
+                </a>
             </div>
+
+            
 
             <div class="pictur-detail-actions">
                 <a href="@Url.Action("Delete", "Image", new { id = Model.ImageId })"
-                   class="pictur-button pictur-button-danger"
-                   onclick="return confirm('Biztosan törölni szeretné ezt a képet?');">
+                   class="pictur-button pictur-button-danger">
                     Kép törlése
                 </a>
             </div>

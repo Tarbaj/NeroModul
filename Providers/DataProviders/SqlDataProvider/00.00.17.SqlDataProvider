@@ -1,0 +1,148 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}pictur_Images]'))
+    DROP TABLE {databaseOwner}[{objectQualifier}pictur_Images]
+GO
+
+CREATE TABLE {databaseOwner}[{objectQualifier}pictur_Images]
+        (
+        [ImageId] INT IDENTITY (1, 1) NOT NULL,
+        [FileId] INT NOT NULL,
+        [UserId] INT NOT NULL,
+        [ModuleId] INT NOT NULL,
+        [TopColorHex] NVARCHAR(7) NOT NULL,
+        [TopColor] NVARCHAR(20) NOT NULL,
+        [Bvin] UNIQUEIDENTIFIER NOT NULL,
+        [CreatedOnDate] DATETIME NOT NULL DEFAULT GETDATE(),
+        CONSTRAINT [PK_{objectQualifier}pictur_Images] PRIMARY KEY CLUSTERED ([ImageId] ASC)
+        )
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}pictur_Images]') AND name = N'IX_pictur_Images_ModuleId')
+BEGIN
+    CREATE INDEX [IX_pictur_Images_ModuleId]
+    ON {databaseOwner}[{objectQualifier}pictur_Images] ([ModuleId])
+END
+GO
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}pictur_Images_GetImages]'))
+    DROP PROCEDURE {databaseOwner}[{objectQualifier}pictur_Images_GetImages]
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}pictur_Images_GetImages]
+    @ModuleId   INT,
+    @UserId     INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT
+        ImageId,
+        FileId,
+        UserId,
+        ModuleId,
+        TopColorHex,
+        TopColor,
+        Bvin,
+        CreatedOnDate
+    FROM {databaseOwner}[{objectQualifier}pictur_Images]
+    WHERE ModuleId = @ModuleId
+    AND UserId = @UserId
+    ORDER BY CreatedOnDate ASC
+END
+GO
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}pictur_Images_GetImage]'))
+    DROP PROCEDURE {databaseOwner}[{objectQualifier}pictur_Images_GetImage]
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}pictur_Images_GetImage]
+    @ImageId INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT
+        ImageId,
+        FileId,
+        UserId,
+        ModuleId,
+        TopColorHex,
+        TopColor,
+        Bvin,
+        CreatedOnDate
+    FROM {databaseOwner}[{objectQualifier}pictur_Images]
+    WHERE ImageId = @ImageId
+END
+GO
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}pictur_Images_AddImage]'))
+    DROP PROCEDURE {databaseOwner}[{objectQualifier}pictur_Images_AddImage]
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}pictur_Images_AddImage]
+    @FileId         INT,
+    @UserId         INT,
+    @ModuleId       INT,
+    @TopColorHex    NVARCHAR(7),
+    @TopColor       NVARCHAR(20),
+    @Bvin           UNIQUEIDENTIFIER
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO {databaseOwner}[{objectQualifier}pictur_Images]
+        (FileId, UserId, ModuleId, TopColorHex, TopColor, Bvin, CreatedOnDate)
+    VALUES
+        (@FileId, @UserId, @ModuleId, @TopColorHex, @TopColor, @Bvin, GETDATE());
+
+    SELECT SCOPE_IDENTITY();
+END
+GO
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}pictur_Images_DeleteImage]'))
+    DROP PROCEDURE {databaseOwner}[{objectQualifier}pictur_Images_DeleteImage]
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}pictur_Images_DeleteImage]
+    @ImageId INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DELETE FROM {databaseOwner}[{objectQualifier}pictur_Images]
+    WHERE ImageId = @ImageId
+END
+GO
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}hcc_Product_GetRandomByColorName]'))
+    DROP PROCEDURE {databaseOwner}[{objectQualifier}hcc_Product_GetRandomByColorName]
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}hcc_Product_GetRandomByColorName]
+    @ColorName NVARCHAR(512)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @SortOrder INT;
+    SELECT TOP 1 @SortOrder = SortOrder 
+    FROM {databaseOwner}[{objectQualifier}hcc_ProductPropertyChoice]
+    WHERE ChoiceName = @ColorName AND PropertyId = 1;
+
+    SELECT TOP 1 p.bvin
+    FROM {databaseOwner}[{objectQualifier}hcc_Product] p
+    INNER JOIN {databaseOwner}[{objectQualifier}hcc_ProductPropertyValue] pv ON p.bvin = pv.ProductBvin
+    WHERE pv.PropertyValue = CAST(@SortOrder AS NVARCHAR(MAX))
+      AND pv.PropertyId = 1
+    ORDER BY NEWID();
+END
+GO
