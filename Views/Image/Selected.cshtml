@@ -41,13 +41,11 @@
             </div>
 
             <div class="pictur-meta-group" style="margin-top: 32px;">
-                <p class="pictur-panel-label">Azonosító (BVIN)</p>
+                <p class="pictur-panel-label">Javasolt termék: (Kattints a képre!)</p>
                 <a href="//nerokozmetika.hu/#/products/@Model.Bvin">
-                    <p class="pictur-file-name">@Model.Bvin</p>
+                    <img class="prod-image" src="/Portals/0/hotcakes/data/products/@Model.Bvin/small/@Model.ImageFileSmall" alt="Javasolt termék képe"/>
                 </a>
             </div>
-
-            
 
             <div class="pictur-detail-actions">
                 <a href="@Url.Action("Delete", "Image", new { id = Model.ImageId })"

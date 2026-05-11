@@ -36,8 +36,11 @@ namespace picturpictur.Components
         public int CreateImage(UserImage userImage)
         {
             if (userImage == null) throw new ArgumentNullException(nameof(userImage));
-            string bvin = _repository.GetProductBvin(userImage.TopColor);
+            string bvin = string.Empty;
+            string ImageFileSmall = string.Empty;
+            (bvin, ImageFileSmall) = _repository.GetProductBvin(userImage.TopColor);
             userImage.Bvin = bvin;
+            userImage.ImageFileSmall = ImageFileSmall;
             return _repository.AddImage(userImage);
         }
 

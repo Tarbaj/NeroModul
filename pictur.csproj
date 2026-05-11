@@ -204,6 +204,7 @@
     <Content Include="Providers\DataProviders\SqlDataProvider\00.00.16.SqlDataProvider" />
     <Content Include="Providers\DataProviders\SqlDataProvider\00.00.15.SqlDataProvider" />
     <Content Include="Providers\DataProviders\SqlDataProvider\00.00.17.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\00.00.18.SqlDataProvider" />
     <None Include="Views\Image\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

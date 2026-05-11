@@ -29,9 +29,10 @@ namespace picturpictur.Data
                 _databaseOwner += ".";
             }
         }
-        public string GetProductBvin(string topColor)
+        public (string, string) GetProductBvin(string topColor)
         {
             string bvin = string.Empty;
+            string ImageFileSmall = string.Empty;
             try
             {
                 using (IDataReader reader = SqlHelper.ExecuteReader(
@@ -43,6 +44,7 @@ namespace picturpictur.Data
                     if (reader.Read())
                     {
                         bvin = Null.SetNullString(reader["bvin"]);
+                        ImageFileSmall = Null.SetNullString(reader["ImageFileSmall"]);
                     }
                 }
             }
@@ -51,7 +53,7 @@ namespace picturpictur.Data
 
                 throw;
             }
-            return bvin;
+            return (bvin, ImageFileSmall);
         }
         private string GetFullyQualifiedName(string name)
         {
@@ -105,7 +107,8 @@ namespace picturpictur.Data
                 new System.Data.SqlClient.SqlParameter("@ModuleId", userImage.ModuleId),
                 new System.Data.SqlClient.SqlParameter("@TopColorHex", userImage.TopColorHex),
                 new System.Data.SqlClient.SqlParameter("@TopColor", userImage.TopColor),
-                new System.Data.SqlClient.SqlParameter("@Bvin", userImage.Bvin));
+                new System.Data.SqlClient.SqlParameter("@Bvin", userImage.Bvin),
+                new System.Data.SqlClient.SqlParameter("@ImageFileSmall", userImage.ImageFileSmall));
 
             return Convert.ToInt32(result);
         }
@@ -130,6 +133,7 @@ namespace picturpictur.Data
                 TopColorHex = Null.SetNullString(reader["TopColorHex"]),
                 TopColor = Null.SetNullString(reader["TopColor"]),
                 Bvin = Null.SetNullString(reader["bvin"]),
+                ImageFileSmall = Null.SetNullString(reader["ImageFileSmall"]),
                 CreatedOnDate = Null.SetNullDateTime(reader["CreatedOnDate"])
             };
         }

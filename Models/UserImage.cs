@@ -20,6 +20,7 @@ namespace picturpictur.Models
 
         public string TopColor { get; set; }
         public string Bvin { get; set; }
+        public string ImageFileSmall { get; set; }
         public DateTime CreatedOnDate { get; set; }
     }
 }

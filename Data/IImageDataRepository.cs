@@ -14,6 +14,6 @@ namespace picturpictur.Data
         UserImage GetImage(int imageId);
         int AddImage(UserImage image);
         void DeleteImage(int imageId);
-        string GetProductBvin(string topColor);
+        (string, string) GetProductBvin(string topColor);
     }
 }

@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\inetpub\\wwwroot\\dnn-dev\\DesktopModules\\MVC\\pictur\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|pictur.csproj|c:\\inetpub\\wwwroot\\dnn-dev\\desktopmodules\\mvc\\pictur\\pictur.dnn||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|pictur.csproj|solutionrelative:pictur.dnn||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|pictur.csproj|C:\\inetpub\\wwwroot\\dnn-dev\\DesktopModules\\MVC\\pictur\\views\\image\\selected.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|pictur.csproj|solutionrelative:views\\image\\selected.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,14 +23,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "pictur.dnn",
-              "DocumentMoniker": "C:\\inetpub\\wwwroot\\dnn-dev\\DesktopModules\\MVC\\pictur\\pictur.dnn",
-              "RelativeDocumentMoniker": "pictur.dnn",
-              "ToolTip": "C:\\inetpub\\wwwroot\\dnn-dev\\DesktopModules\\MVC\\pictur\\pictur.dnn",
-              "RelativeToolTip": "pictur.dnn",
-              "ViewState": "AgIAACcAAAAAAAAAAAAAACQAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-05-11T13:31:20.37Z",
+              "Title": "Selected.cshtml",
+              "DocumentMoniker": "C:\\inetpub\\wwwroot\\dnn-dev\\DesktopModules\\MVC\\pictur\\Views\\Image\\Selected.cshtml",
+              "RelativeDocumentMoniker": "Views\\Image\\Selected.cshtml",
+              "ToolTip": "C:\\inetpub\\wwwroot\\dnn-dev\\DesktopModules\\MVC\\pictur\\Views\\Image\\Selected.cshtml",
+              "RelativeToolTip": "Views\\Image\\Selected.cshtml",
+              "ViewState": "AgIAABMAAAAAAAAAAAAAwCsAAABSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-11T14:31:48.303Z",
               "EditorCaption": ""
             }
           ]
