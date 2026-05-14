@@ -37,10 +37,15 @@ namespace picturpictur.Components
         {
             if (userImage == null) throw new ArgumentNullException(nameof(userImage));
             string bvin = string.Empty;
-            string ImageFileSmall = string.Empty;
-            (bvin, ImageFileSmall) = _repository.GetProductBvin(userImage.TopColor);
+            string imageFileSmall = string.Empty;
+            string altBvin = string.Empty;
+            string altImageFileSmall = string.Empty;
+            (bvin, imageFileSmall) = _repository.GetProductBvin(userImage.TopColor);
+            (altBvin, altImageFileSmall) = _repository.GetProductBvin(userImage.AltColor);
             userImage.Bvin = bvin;
-            userImage.ImageFileSmall = ImageFileSmall;
+            userImage.ImageFileSmall = imageFileSmall;
+            userImage.AltBvin = altBvin;
+            userImage.AltImageFileSmall = altImageFileSmall;
             return _repository.AddImage(userImage);
         }
 

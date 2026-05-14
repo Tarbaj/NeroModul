@@ -208,6 +208,8 @@
     <Content Include="Providers\DataProviders\SqlDataProvider\00.00.18.SqlDataProvider" />
     <Content Include="Providers\DataProviders\SqlDataProvider\00.00.19.SqlDataProvider" />
     <Content Include="Providers\DataProviders\SqlDataProvider\00.00.20.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\00.00.21.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\00.00.22.SqlDataProvider" />
     <None Include="Views\Image\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

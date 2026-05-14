@@ -1,16 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\inetpub\\wwwroot\\dnn-dev\\DesktopModules\\MVC\\pictur\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|pictur.csproj|c:\\inetpub\\wwwroot\\dnn-dev\\desktopmodules\\mvc\\pictur\\components\\imageprocessor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|pictur.csproj|solutionrelative:components\\imageprocessor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|pictur.csproj|c:\\inetpub\\wwwroot\\dnn-dev\\desktopmodules\\mvc\\pictur\\pictur.dnn||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|pictur.csproj|solutionrelative:pictur.dnn||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -18,37 +9,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ImageProcessor.cs",
-              "DocumentMoniker": "C:\\inetpub\\wwwroot\\dnn-dev\\DesktopModules\\MVC\\pictur\\Components\\ImageProcessor.cs",
-              "RelativeDocumentMoniker": "Components\\ImageProcessor.cs",
-              "ToolTip": "C:\\inetpub\\wwwroot\\dnn-dev\\DesktopModules\\MVC\\pictur\\Components\\ImageProcessor.cs",
-              "RelativeToolTip": "Components\\ImageProcessor.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAAwEUAAABJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-11T19:51:58.707Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "pictur.dnn",
-              "DocumentMoniker": "C:\\inetpub\\wwwroot\\dnn-dev\\DesktopModules\\MVC\\pictur\\pictur.dnn",
-              "RelativeDocumentMoniker": "pictur.dnn",
-              "ToolTip": "C:\\inetpub\\wwwroot\\dnn-dev\\DesktopModules\\MVC\\pictur\\pictur.dnn",
-              "RelativeToolTip": "pictur.dnn",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-05-11T19:48:26.123Z",
-              "EditorCaption": ""
             }
           ]
         }

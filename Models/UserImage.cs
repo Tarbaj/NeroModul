@@ -9,18 +9,17 @@ namespace picturpictur.Models
     public class UserImage
     {
         public int ImageId { get; set; }
-
         public int FileId { get; set; }
-
         public int UserId { get; set; }
-
         public int ModuleId { get; set; }
-
         public string TopColorHex { get; set; }
-
         public string TopColor { get; set; }
+        public string AltColorHex { get; set; }
+        public string AltColor { get; set; }
         public string Bvin { get; set; }
         public string ImageFileSmall { get; set; }
+        public string AltBvin { get; set; }
+        public string AltImageFileSmall { get; set; }
         public DateTime CreatedOnDate { get; set; }
     }
 }

@@ -62,6 +62,8 @@ namespace picturpictur.Controllers
                 int fileId = 0;
                 string topColorHex = "#000000";
                 string topColor = "Fehér";
+                string altColorHex = "#000000";
+                string altColor = "Fehér";
                 if (attachment != null && attachment.ContentLength > 0)
                 {
                     var allowed = new[] { "image/jpeg", "image/png" };
@@ -71,6 +73,7 @@ namespace picturpictur.Controllers
                     }
                     fileId = _processor.UploadImage(attachment, PortalSettings.PortalId);
                     (topColorHex, topColor) = _processor.GetTopColor(attachment.InputStream);
+                    (altColorHex, altColor) = _processor.ComplementFind(topColor);
                 }
                 var userImage = new UserImage()
                 {
@@ -78,7 +81,9 @@ namespace picturpictur.Controllers
                     UserId          = User.UserID,
                     ModuleId        = ModuleContext.ModuleId,
                     TopColorHex     = topColorHex,
-                    TopColor        = topColor
+                    TopColor        = topColor,
+                    AltColorHex  = altColorHex,
+                    AltColor     = altColor
                 };
 
                 _imageService.CreateImage(userImage);

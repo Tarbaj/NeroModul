@@ -107,8 +107,12 @@ namespace picturpictur.Data
                 new System.Data.SqlClient.SqlParameter("@ModuleId", userImage.ModuleId),
                 new System.Data.SqlClient.SqlParameter("@TopColorHex", userImage.TopColorHex),
                 new System.Data.SqlClient.SqlParameter("@TopColor", userImage.TopColor),
+                new System.Data.SqlClient.SqlParameter("@AltColorHex", userImage.AltColorHex),
+                new System.Data.SqlClient.SqlParameter("@AltColor", userImage.AltColor),
                 new System.Data.SqlClient.SqlParameter("@Bvin", userImage.Bvin),
-                new System.Data.SqlClient.SqlParameter("@ImageFileSmall", userImage.ImageFileSmall));
+                new System.Data.SqlClient.SqlParameter("@ImageFileSmall", userImage.ImageFileSmall),
+                new System.Data.SqlClient.SqlParameter("@AltBvin", userImage.AltBvin),
+                new System.Data.SqlClient.SqlParameter("@AltImageFileSmall", userImage.AltImageFileSmall));
 
             return Convert.ToInt32(result);
         }
@@ -132,8 +136,12 @@ namespace picturpictur.Data
                 ModuleId = Null.SetNullInteger(reader["ModuleId"]),
                 TopColorHex = Null.SetNullString(reader["TopColorHex"]),
                 TopColor = Null.SetNullString(reader["TopColor"]),
+                AltColorHex = Null.SetNullString(reader["AltColorHex"]),
+                AltColor = Null.SetNullString(reader["AltColor"]),
                 Bvin = Null.SetNullString(reader["bvin"]),
                 ImageFileSmall = Null.SetNullString(reader["ImageFileSmall"]),
+                AltBvin = Null.SetNullString(reader["Altbvin"]),
+                AltImageFileSmall = Null.SetNullString(reader["AltImageFileSmall"]),
                 CreatedOnDate = Null.SetNullDateTime(reader["CreatedOnDate"])
             };
         }

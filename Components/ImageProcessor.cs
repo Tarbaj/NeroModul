@@ -35,6 +35,31 @@ namespace picturpictur.Components
             { "Arany", (new Rgb24(199, 158, 68), "#C79E44") },
             { "Ezüst", (new Rgb24(186, 186, 186), "#BABABA") }
         };
+        private static readonly Dictionary<string, string> Complement = new Dictionary<string, string>
+        {
+            { "Piros", "Zöld" },
+            { "Zöld", "Piros" },
+            { "Kék", "Narancs" },
+            { "Narancs", "Kék" },
+            { "Pink", "Menta" },
+            { "Menta", "Pink" },
+            { "Lila", "Arany" },
+            { "Arany", "Lila" },
+            { "Barna", "Nude" },
+            { "Nude", "Barna" },
+            { "Szürke", "Ezüst" },
+            { "Ezüst", "Fehér" },
+            { "Fehér", "Rózsaszín" },
+            { "Rózsaszín", "Barack" },
+            { "Barack", "Szürke" }
+        };
+        public (string, string) ComplementFind(string TopColor)
+        {
+            string AltColor = Complement[TopColor];
+            string AltColorHex = Palette[AltColor].Hex;
+
+            return (AltColorHex, AltColor);
+        }
         private string FindClosestPaletteName(Rgb24 pixel)
         {
             string closestName = "Fehér";
@@ -90,7 +115,6 @@ namespace picturpictur.Components
                 return (Palette[winningName].Hex, winningName);
             }
         }
-
         private byte[] RemoveBackground(Stream inputStream)
         {
             try
@@ -126,7 +150,6 @@ namespace picturpictur.Components
                 return null;
             }
         }
-
         public int UploadImage(HttpPostedFileBase file, int portalId)
         {
             var folderManager = FolderManager.Instance;
@@ -144,7 +167,6 @@ namespace picturpictur.Components
                 overwrite: true);
             return savedFile.FileId;
         }
-
         public void DeleteImage(int fileId)
         {
             var fileInfo = FileManager.Instance.GetFile(fileId);

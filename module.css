@@ -328,3 +328,32 @@
     width: 200px;
     height: 200px;
 }
+
+.pictur-colors-row {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+}
+
+.pictur-color-block {
+    flex: 1;
+    min-width: 120px;
+}
+
+.pictur-products-row {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.pictur-product-item {
+    text-align: center;
+}
+
+.prod-image {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    border: 1px solid rgba(0,0,0,0.05);
+}
