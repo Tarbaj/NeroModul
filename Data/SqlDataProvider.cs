@@ -77,7 +77,6 @@ namespace picturpictur.Data
             }
             return images;
         }
-
         public UserImage GetImage(int imageId)
         {
             UserImage userImage = null;
@@ -95,7 +94,6 @@ namespace picturpictur.Data
             }
             return userImage;
         }
-
         public int AddImage(UserImage userImage)
         {
             object result = SqlHelper.ExecuteScalar(
@@ -116,7 +114,6 @@ namespace picturpictur.Data
 
             return Convert.ToInt32(result);
         }
-
         public void DeleteImage(int imageId)
         {
             SqlHelper.ExecuteNonQuery(
@@ -125,7 +122,23 @@ namespace picturpictur.Data
                 GetFullyQualifiedName("DeleteImage"),
                 new System.Data.SqlClient.SqlParameter("@ImageId", imageId));
         }
+        public IEnumerable<ColorsApi> GetColors(int moduleId)
+        {
+            var colors = new List<ColorsApi>();
 
+            using (IDataReader reader = SqlHelper.ExecuteReader(
+                _connectionString,
+                CommandType.StoredProcedure,
+                GetFullyQualifiedName("GetColors"),
+                new System.Data.SqlClient.SqlParameter("@ModuleId", moduleId)))
+            {
+                while (reader.Read())
+                {
+                    colors.Add(FillColorsApi(reader));
+                }
+            }
+            return colors;
+        }
         private static UserImage FillUserImage(IDataReader reader)
         {
             return new UserImage
@@ -143,6 +156,14 @@ namespace picturpictur.Data
                 AltBvin = Null.SetNullString(reader["Altbvin"]),
                 AltImageFileSmall = Null.SetNullString(reader["AltImageFileSmall"]),
                 CreatedOnDate = Null.SetNullDateTime(reader["CreatedOnDate"])
+            };
+        }
+        private static ColorsApi FillColorsApi(IDataReader reader)
+        {
+            return new ColorsApi
+            {
+                TopColor = Null.SetNullString(reader["TopColor"]),
+                AltColor = Null.SetNullString(reader["AltColor"])
             };
         }
     }

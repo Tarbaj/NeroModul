@@ -55,5 +55,10 @@ namespace picturpictur.Components
             if(userImage == null) throw new ArgumentException("A törölni kívánt kép nem található");
             _repository.DeleteImage(imageId);
         }
+
+        public IEnumerable<ColorsApi> GetColors(int moduleId)
+        {
+            return _repository.GetColors(moduleId);
+        }
     }
 }
